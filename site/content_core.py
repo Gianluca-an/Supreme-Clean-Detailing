@@ -180,13 +180,26 @@ CORE_PAGES = [
         "priority": "1.0",
         "title": "Supreme Clean Detailing: Mobile Car Detailing in Casa Grande, AZ | (520) 840-2452",
         "desc": "Top-rated mobile car detailing in Casa Grande, AZ ✔ 5.0★ on Google ✔ Owner-operated ✔ Fair upfront prices ✔ We come to you ☎ (520) 840-2452",
-        "h1": "Mobile car detailing that comes to you — Casa Grande &amp; the I-10 corridor",
-        "hero_sub": f"Owner-operated by {BIZ['owner']}. Dealership-quality interior and exterior details at your home or office — at prices customers call “half of the quotes I received.”",
-        "hero_badges": [
-            {"icon": "truck", "text": "We come to you — home or work"},
-            {"icon": "cash", "text": "No prepayment, ever"},
-            {"icon": "shield", "text": "Satisfaction guaranteed"},
+        "hero_eyebrow": "Owner-operated · Casa Grande, Arizona",
+        "h1": "The quiet art of <em>mobile detailing</em> — at your Casa Grande driveway.",
+        "hero_sub": f"Mobile car detailing for Casa Grande and the I-10 corridor, done by {BIZ['owner']} — the owner — with the patience the desert demands. Washed, steamed and finished by hand. No rush, no residue, no prepayment.",
+        "hero_stats": [
+            ("5.0<i>★</i>", "Google rating"),
+            ("20", "Five-star reviews"),
+            ("100<i>%</i>", "Satisfaction guarantee"),
         ],
+        "hero_card": {
+            "label": "Signature · Full Detail",
+            "price": "from $199",
+            "rows": [
+                ("Interior deep clean, steam &amp; shampoo", "2–3 h"),
+                ("Two-bucket hand wash &amp; wheels", "included"),
+                ("Sealant, hand-finished", "included"),
+                ("Walk-around before you pay", "always"),
+            ],
+            "btn_text": "View full pricing",
+            "btn_href": "/pricing/",
+        },
         "sections": [
             TRUSTBAR,
             (

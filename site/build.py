@@ -96,15 +96,50 @@ def icon(name: str) -> str:
 
 LOGO = (
     '<span class="logo" aria-hidden="true">'
-    '<svg viewBox="0 0 32 32" width="30" height="30"><defs>'
-    '<linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">'
-    '<stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#0b72d7"/>'
-    "</linearGradient></defs>"
-    '<path fill="url(#lg)" d="M16 2s10 10.4 10 17a10 10 0 0 1-20 0C6 12.4 16 2 16 2z"/>'
-    '<path fill="#fff" d="M11.2 20.4c2.6 2.4 7 2.3 9.4-.4l1.5 1.4c-3.2 3.5-8.9 3.6-12.3.5z"/>'
-    '<path fill="#fff" d="M20.8 13.6c-2.6-2.4-7-2.3-9.4.4l-1.5-1.4c3.2-3.5 8.9-3.6 12.3-.5z"/>'
+    '<svg viewBox="0 0 40 40" width="30" height="30" fill="none">'
+    '<path d="M20 4 C 26 14, 32 18, 32 26 a12 12 0 0 1 -24 0 c0-8 6-12 12-22z" '
+    'stroke="#9fe0e8" stroke-width="1.4" fill="rgba(159,224,232,.09)"/>'
+    '<circle cx="20" cy="26" r="3" fill="#9fe0e8"/>'
     "</svg></span>"
 )
+
+SIG_CAR_SVG = """<svg viewBox="0 0 400 160" class="sig-car" role="img" aria-label="Illustration of a freshly detailed car with water beading on the paint">
+<defs>
+<linearGradient id="sigbody" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#cfe7ea" stop-opacity=".9"/>
+<stop offset="100%" stop-color="#5fb8c4" stop-opacity=".4"/>
+</linearGradient>
+<linearGradient id="sigglass" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#9fe0e8" stop-opacity=".7"/>
+<stop offset="100%" stop-color="#11484f" stop-opacity=".6"/>
+</linearGradient>
+</defs>
+<path d="M40,110 C60,70 100,55 160,52 C200,50 220,40 250,40 C300,40 330,55 360,75 L380,95 C388,100 390,108 388,115 L380,120 L350,120 L340,128 L320,128 L310,120 L100,120 L90,128 L70,128 L60,120 L40,118 C32,116 30,112 40,110 Z" fill="url(#sigbody)" stroke="rgba(243,249,250,.4)" stroke-width="1"/>
+<path d="M120,75 C150,55 200,50 260,55 L290,75 L260,95 L150,95 Z" fill="url(#sigglass)" opacity=".85"/>
+<circle cx="95" cy="120" r="18" fill="#061821" stroke="#5fb8c4" stroke-width="1.5"/>
+<circle cx="95" cy="120" r="7" fill="#9fe0e8"/>
+<circle cx="305" cy="120" r="18" fill="#061821" stroke="#5fb8c4" stroke-width="1.5"/>
+<circle cx="305" cy="120" r="7" fill="#9fe0e8"/>
+<circle cx="200" cy="70" r="3" fill="rgba(255,255,255,.7)"/>
+<circle cx="180" cy="85" r="2" fill="rgba(255,255,255,.5)"/>
+<circle cx="230" cy="78" r="2.5" fill="rgba(255,255,255,.6)"/>
+</svg>"""
+
+# deterministic ambient bubbles (size px, left %, duration s, delay s)
+BUBBLES = [
+    (9, 6, 14, 0), (22, 14, 19, 4), (7, 22, 12, 8), (30, 31, 22, 2),
+    (12, 44, 16, 10), (18, 55, 20, 6), (8, 63, 13, 12), (26, 72, 21, 1),
+    (10, 81, 15, 9), (34, 89, 24, 5), (14, 95, 17, 13), (6, 37, 11, 15),
+]
+
+
+def bubbles_html() -> str:
+    spans = "".join(
+        f'<span class="bubble" style="width:{s}px;height:{s}px;left:{l}%;'
+        f'animation-duration:{d}s;animation-delay:{y}s"></span>'
+        for s, l, d, y in BUBBLES
+    )
+    return f'<div class="bubbles" aria-hidden="true">{spans}</div>'
 
 # ----------------------------------------------------------------- helpers ---
 
@@ -376,8 +411,10 @@ def footer() -> str:
     <li><a href="{BIZ['review_url']}">{icon('star')} Leave us a review</a></li>
   </ul></div>
 </div>
-<div class="wrap ft-legal"><p>© {CURRENT_YEAR} {BIZ['name']} · {BIZ['city']}, {BIZ['region']} · <a href="/sitemap.xml">Sitemap</a></p>
-<p>100% satisfaction guarantee — if you're not happy with a panel or a seat, {BIZ['owner']} re-does it. No prepayment required.</p></div>
+<div class="wrap ft-legal">
+<span>© {CURRENT_YEAR} {BIZ['name']} · {BIZ['city']}, {BIZ['region']}</span>
+<span>On time · Fair prices · Satisfaction guaranteed</span>
+<span>{BIZ['hours_human']} · <a href="/sitemap.xml">Sitemap</a></span></div>
 </footer>
 <div class="mobile-bar" aria-label="Quick actions">
   <a href="tel:{BIZ['phone_e164']}">{icon('phone')} Call</a>
@@ -386,23 +423,52 @@ def footer() -> str:
 </div>"""
 
 
+def sig_card(c) -> str:
+    rows = "".join(
+        f'<div class="sig-row"><b><span class="sig-dot"></span>{text}</b><em>{meta}</em></div>'
+        for text, meta in c["rows"]
+    )
+    return f"""<div class="sig rv rv-3">
+  <div class="gleam"></div>
+  <div class="sig-head"><span>{c['label']}</span><span class="sig-price">{c['price']}</span></div>
+  <div class="sig-art">{SIG_CAR_SVG}</div>
+  <div class="sig-rows">{rows}</div>
+  <a class="btn btn-outline" href="{c['btn_href']}">{c['btn_text']}</a>
+</div>"""
+
+
 def hero(p) -> str:
     badges = "".join(f"<li>{icon(b.get('icon','check'))}{b['text']}</li>" for b in p.get("hero_badges", []))
-    badges_html = f'<ul class="hero-badges">{badges}</ul>' if badges else ""
-    rating = (
-        f'<a class="hero-rating" href="{BIZ["gbp_url"]}">{stars()}'
-        f'<strong>{BIZ["rating"]}</strong> · {BIZ["review_count"]} Google reviews</a>'
-    )
-    sub = f'<p class="hero-sub">{p["hero_sub"]}</p>' if p.get("hero_sub") else ""
-    return f"""<section class="hero"><div class="wrap">
-  {rating}
-  <h1>{p['h1']}</h1>
+    badges_html = f'<ul class="hero-badges rv rv-3">{badges}</ul>' if badges else ""
+    eyebrow = f'<p class="eyebrow rv">{p["hero_eyebrow"]}</p>' if p.get("hero_eyebrow") else ""
+    rating = ""
+    if not p.get("hero_stats"):
+        rating = (
+            f'<a class="hero-rating rv" href="{BIZ["gbp_url"]}">{stars()}'
+            f'<strong>{BIZ["rating"]}</strong> · {BIZ["review_count"]} Google reviews</a>'
+        )
+    stats = ""
+    if p.get("hero_stats"):
+        cells = "".join(
+            f'<div><div class="stat-num">{num}</div><div class="stat-lb">{label}</div></div>'
+            for num, label in p["hero_stats"]
+        )
+        stats = f'<div class="hero-stats rv rv-3">{cells}</div>'
+    sub = f'<p class="hero-sub rv rv-2">{p["hero_sub"]}</p>' if p.get("hero_sub") else ""
+    left = f"""{rating}{eyebrow}
+  <h1 class="rv">{p['h1']}</h1>
   {sub}
-  <div class="hero-ctas">
-    <a class="btn btn-primary btn-lg" href="/book/">Get my price &amp; book</a>
+  <div class="hero-ctas rv rv-2">
+    <a class="btn btn-primary btn-lg" href="/book/">Reserve a detail</a>
     <a class="btn btn-outline btn-lg" href="sms:{BIZ['phone_e164']}">{icon('chat')} Text {BIZ['phone_display']}</a>
   </div>
-  {badges_html}
+  {badges_html}{stats}"""
+    if p.get("hero_card"):
+        inner = f'<div class="hero-grid"><div>{left}</div>{sig_card(p["hero_card"])}</div>'
+    else:
+        inner = left
+    return f"""<section class="hero">{bubbles_html()}<div class="wrap">
+  {inner}
 </div></section>"""
 
 
@@ -574,10 +640,14 @@ def render_page(p) -> str:
 <meta name="twitter:description" content="{esc(p['desc'])}">
 <meta name="twitter:image" content="{SITE_URL}/assets/og-card.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 {schema}
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
 {header(p.get('nav_active',''))}
 <main id="main">
 {crumbs_html(p)}
