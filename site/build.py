@@ -24,11 +24,20 @@ OUT = ROOT.parent / "public"
 # ---------------------------------------------------------------- business ---
 SITE_URL = "https://supremecleandetailingpro.com"
 
-# GoHighLevel booking calendar (paste the calendar's permanent link / widget URL,
-# e.g. "https://api.leadconnectorhq.com/widget/booking/XXXXXXXX" or your branded
-# link.supremecleandetailingpro.com widget URL). When set, /book/ renders the
-# calendar embed with the request form as a fallback below it.
-GHL_CALENDAR_URL = ""
+# GoHighLevel booking calendar — renders on /book/ with the request form as
+# fallback. primaryColor set to brand aqua 5FB8C4 (the link's original
+# 9F0E13 red clashes with the site palette; swap the param back if the red
+# was intentional).
+GHL_CALENDAR_URL = (
+    "https://api.leadconnectorhq.com/widget/booking/vkmRhebji6NFtGUXYuxl"
+    "?backgroundColor=%23ffffff&primaryColor=%235FB8C4"
+    "&buttonText=Schedule+Appointment&showCalendarTitle=true"
+    "&showCalendarDescription=true&showCalendarDetails=true&default=false"
+)
+
+# Flip to True (and restore the PRICE-SLOT values noted in the content files)
+# once Anthony's real price list is confirmed.
+PRICES_LIVE = False
 BIZ = {
     "name": "Supreme Clean Detailing",
     "owner": "Anthony",
@@ -268,10 +277,23 @@ def s_areas(d) -> str:
 
 
 def s_gallery_ph(d) -> str:
-    # TODO(owner): replace placeholders with real before/after photos (own work only).
-    tiles = "".join(
-        '<div class="ph-tile"><span>Before / after photo slot — add your own work here</span></div>' for _ in range(6)
-    )
+    """Photo-drop pipeline: put JPG/PNG/WebP files in site/assets/gallery/ and
+    rebuild — they render automatically (alt text from the filename, e.g.
+    'interior-deep-clean-f150-before-after.jpg'). Until then: labelled slots."""
+    gal = ROOT / "assets" / "gallery"
+    photos = sorted(p for p in gal.glob("*") if p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}) if gal.exists() else []
+    if photos:
+        tiles = "".join(
+            '<figure class="g-tile"><img loading="lazy" src="/assets/gallery/{n}" alt="{a}"></figure>'.format(
+                n=p.name, a=esc(p.stem.replace("-", " ").replace("_", " ").strip().capitalize())
+            )
+            for p in photos
+        )
+    else:
+        tiles = "".join(
+            '<div class="ph-tile"><span>Before / after photo slot — drop images into site/assets/gallery/ and rebuild</span></div>'
+            for _ in range(6)
+        )
     head = section_head(d)
     return f'<section class="sec"><div class="wrap">{head}<div class="grid g3">{tiles}</div></div></section>'
 
@@ -282,7 +304,7 @@ def s_form(d) -> str:
     # as a fallback for people who don't want to pick a slot.
     ghl = ""
     form_title = "Request your appointment"
-    if GHL_CALENDAR_URL:
+    if GHL_CALENDAR_URL and d.get("calendar", True):
         ghl = (
             '<h2>Pick your time</h2>'
             '<p class="sub">Live availability — booked straight onto '
@@ -496,7 +518,7 @@ def base_schema(p) -> list[dict]:
         "url": SITE_URL + "/",
         "telephone": BIZ["phone_e164"],
         "email": BIZ["email"],
-        "priceRange": "$69 - $299",
+        # PRICE-SLOT: restore "priceRange" (e.g. "$69 - $299") when PRICES_LIVE
         "image": SITE_URL + "/assets/og-card.png",
         "address": {
             "@type": "PostalAddress",
@@ -575,8 +597,8 @@ def base_schema(p) -> list[dict]:
     return out
 
 
-def service_schema(name: str, desc: str, url_path: str, low: int, high: int) -> dict:
-    return {
+def service_schema(name: str, desc: str, url_path: str, low: int = 0, high: int = 0) -> dict:
+    out = {
         "@context": "https://schema.org",
         "@type": "Service",
         "name": name,
@@ -585,14 +607,16 @@ def service_schema(name: str, desc: str, url_path: str, low: int, high: int) -> 
         "provider": {"@id": SITE_URL + "/#business"},
         "areaServed": [{"@type": "City", "name": f"{c}, AZ"} for c, _ in CITIES_SERVED],
         "url": SITE_URL + url_path,
-        "offers": {
+    }
+    if PRICES_LIVE and low and high:
+        out["offers"] = {
             "@type": "AggregateOffer",
             "priceCurrency": "USD",
             "lowPrice": str(low),
             "highPrice": str(high),
             "url": SITE_URL + "/pricing/",
-        },
-    }
+        }
+    return out
 
 
 def blogposting_schema(title: str, desc: str, url_path: str, published: str) -> dict:
@@ -670,6 +694,12 @@ def build(pages) -> None:
     png = ROOT / "assets" / "og-card.png"
     if png.exists():
         shutil.copy(png, OUT / "assets" / "og-card.png")
+    gal = ROOT / "assets" / "gallery"
+    if gal.exists() and any(gal.iterdir()):
+        shutil.copytree(gal, OUT / "assets" / "gallery")
+
+    # Apache/LiteSpeed config for Namecheap cPanel hosting
+    (OUT / ".htaccess").write_text(HTACCESS, encoding="utf-8")
 
     urls = []
     for p in pages:
@@ -688,7 +718,45 @@ def build(pages) -> None:
     sm.append("</urlset>")
     (OUT / "sitemap.xml").write_text("\n".join(sm), encoding="utf-8")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
+
+    # Namecheap-ready upload bundle: unzip the CONTENTS into public_html
+    zip_path = OUT.parent / "supremecleandetailingpro-site"
+    archive = shutil.make_archive(str(zip_path), "zip", OUT)
     print(f"Built {len(pages)} pages -> {OUT}")
+    print(f"Upload bundle -> {archive}")
+
+
+HTACCESS = f"""# Supreme Clean Detailing — Namecheap/cPanel (Apache/LiteSpeed)
+Options -Indexes
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# Force HTTPS + strip www (enable Namecheap AutoSSL first; harmless once live)
+RewriteCond %{{HTTPS}} !=on [OR]
+RewriteCond %{{HTTP_HOST}} ^www\\. [NC]
+RewriteRule ^(.*)$ {SITE_URL}/$1 [L,R=301]
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css "access plus 30 days"
+ExpiresByType image/svg+xml "access plus 30 days"
+ExpiresByType image/png "access plus 30 days"
+ExpiresByType image/jpeg "access plus 30 days"
+ExpiresByType image/webp "access plus 30 days"
+ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+"""
 
 
 if __name__ == "__main__":

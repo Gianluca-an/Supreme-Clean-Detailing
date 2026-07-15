@@ -21,46 +21,76 @@ Built from the competitive teardown in `research/az-detailing-market-teardown.md
 python3 site/build.py     # writes ./public  (stdlib only, no pip installs)
 ```
 
-## Deploy
+## Deploy — Namecheap (cPanel), the planned host
 
-`public/` is plain static files — drop it on anything:
+Every build produces a ready-to-upload bundle at the repo root:
+**`supremecleandetailingpro-site.zip`** (the contents of `public/`,
+including a tuned `.htaccess` for Apache/LiteSpeed: HTTPS + non-www
+redirect, 404 page, gzip, cache headers).
 
-- **Cloudflare Pages / Netlify**: point at the repo, build command `python3 site/build.py`, output dir `public` (or just upload `public/`).
-- **GitHub Pages**: serve the `public/` folder from a branch.
-- Any shared host / S3: upload `public/` contents.
+1. Point the domain's nameservers/DNS at the Namecheap hosting plan.
+2. cPanel → SSL/TLS → run **AutoSSL** for supremecleandetailingpro.com
+   (the `.htaccess` HTTPS redirect expects a cert to exist).
+3. cPanel → File Manager → `public_html` → Upload the zip → **Extract** →
+   delete the zip. (Upload the *contents* at the top level — index.html
+   must land at `public_html/index.html`.)
+4. Visit the site; check `/book/` (GHL calendar), `/sitemap.xml`, and a
+   deep URL like `/car-detailing-maricopa-az/`.
+5. Google Search Console → add property → submit `/sitemap.xml`.
 
-Then in `site/build.py` set **`SITE_URL`** to the real domain (currently
-`https://supremecleandetailing.com`) and rebuild — canonicals, OG URLs,
-schema and sitemap all update from that one constant.
+Redeploys: rebuild locally (`python3 site/build.py`), re-upload the zip.
+(Alternatives — Cloudflare Pages/Netlify with build command
+`python3 site/build.py`, output `public` — still work if hosting changes.)
 
-## Owner checklist before going live (IMPORTANT)
+## Booking (GoHighLevel) — LIVE
 
-1. **Prices** — every dollar figure lives in `site/content_core.py`
-   (`PRICING_TIERS`, `ADDONS`) and the service pages in
-   `site/content_services.py`. They are market-informed *placeholders*
-   consistent with "half of the quotes I received" — **Anthony must confirm
-   or adjust each number.**
-2. **Hours** — set to Mon–Sat 8–6 in `build.py` (`BIZ["hours_*"]`). Confirm.
-3. **Guarantee wording** — the site promises "100% satisfaction — re-done on
-   the spot before you pay." Confirm Anthony stands behind that exact promise.
-4. **Booking form** — uses FormSubmit (free relay). The FIRST submission sends
-   an activation email to supremecleandetailing01@gmail.com — click it once
-   and all future submissions arrive as email. Alternatives: Netlify Forms,
-   or embed a booking SaaS (fieldd / OrbisX / Urable — see playbook §7.8) on
-   `/book/` later.
-5. **Review link** — `BIZ["review_url"]` currently points to the Maps search.
-   Replace with the direct "Ask for reviews" short link from the Google
-   Business Profile dashboard for one-tap reviews.
-6. **Gallery** — `/gallery/` ships with labelled placeholder tiles. Add real
-   before/after photos (own work only; the teardown shows stock photos are a
-   bottom-cohort marker).
-7. **Domain email** — replace the Gmail address with hello@<domain> once the
-   domain exists (playbook Phase 0.2), then update `BIZ["email"]`.
+`/book/` embeds the GHL calendar (`GHL_CALENDAR_URL` in `site/build.py`)
+with the FormSubmit request form kept below as a fallback. Notes:
+- The embed's `primaryColor` param was changed from the link's red
+  (#9F0E13) to brand aqua (#5FB8C4) to match the site — swap the param
+  back in `build.py` if the red was intentional.
+- The GHL resize script (`link.msgsndr.com/js/form_embed.js`) loads on
+  /book/ only — the rest of the site remains 0-JS.
+
+## Prices — intentionally OFF right now
+
+Per owner request the site currently shows **no dollar figures**: packages
+display inclusions/durations with "quoted upfront" and every page pushes
+text-a-photo quoting. When Anthony's price list is confirmed:
+1. Search the `site/` folder for **`PRICE-SLOT`** — each marker sits where
+   numbers belong (pricing tiers, add-ons, card prices, schema priceRange).
+2. Restore per-size figures (original placeholder wording is in git
+   history: `git show 4b4e353:site/content_core.py`).
+3. Flip **`PRICES_LIVE = True`** in `site/build.py` (re-enables
+   Service/AggregateOffer + priceRange schema), rebuild, re-upload.
+
+## Photos — drop-in pipeline
+
+Put JPG/PNG/WebP files in **`site/assets/gallery/`** and rebuild — the
+gallery page renders them automatically with alt text taken from the
+filename. Name files descriptively for SEO, e.g.
+`interior-deep-clean-f150-casa-grande-before-after.jpg`.
+(Own work only — the teardown shows stock photos are a bottom-cohort marker.)
+
+## Owner checklist (remaining)
+
+1. **Prices** — see PRICE-SLOT flow above (arriving today).
+2. **Photos** — see gallery pipeline above (arriving today).
+3. **Hours** — set to Mon–Sat 8–6 in `build.py` (`BIZ["hours_*"]`). Confirm.
+4. **Guarantee wording** — "100% satisfaction — re-done on the spot before
+   you pay." Confirm Anthony stands behind that exact promise.
+5. **Fallback form** — FormSubmit needs one-time activation: the first
+   submission emails an activation link to supremecleandetailing01@gmail.com.
+   (Optional: swap for a GHL form/webhook so fallback leads also land in CRM.)
+6. **Review link** — `BIZ["review_url"]` currently points to the Maps search.
+   Replace with the direct "Ask for reviews" short link from the GBP dashboard.
+7. **Domain email** — replace the Gmail address with hello@supremecleandetailingpro.com
+   once mail is set up on the domain, then update `BIZ["email"]`.
 8. **Address visibility** — full street address (matching the GBP) is in the
    LocalBusiness schema for NAP consistency; visible pages show "Casa Grande,
-   AZ 85122" only. If Anthony prefers a Service-Area-Business listing with a
-   hidden address, hide it on GBP and remove `streetAddress` from
-   `build.py` at the same time — the two must always match.
+   AZ 85122" only. If Anthony prefers a hidden-address Service-Area listing,
+   hide it on GBP and remove `streetAddress` from `build.py` together —
+   the two must always match.
 
 ## Editing content
 

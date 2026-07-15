@@ -13,9 +13,9 @@ BLOG_PAGES = [
         "nav_active": "",
         "priority": "0.6",
         "title": "Car Care Blog — Detailing Tips for Casa Grande & Pinal County | Supreme Clean Detailing",
-        "desc": "Straight answers about car detailing in Casa Grande & Pinal County AZ: real prices, monsoon dust survival, interior care in desert heat and more.",
+        "desc": "Straight answers about car detailing in Casa Grande & Pinal County AZ: how pricing works, monsoon dust survival, interior care in desert heat and more.",
         "h1": "The Pinal County car care blog",
-        "hero_sub": "No fluff — real prices, desert-specific advice, and answers to the questions customers actually text us.",
+        "hero_sub": "No fluff — straight pricing answers, desert-specific advice, and the questions customers actually text us.",
         "crumbs": [("Blog", None)],
         "sections": [
             (
@@ -26,7 +26,7 @@ BLOG_PAGES = [
                         {
                             "icon": "cash",
                             "title": "How much does mobile detailing cost in Casa Grande? (2026 guide)",
-                            "text": "Real numbers — ours and the market's — plus what actually changes the price of a detail.",
+                            "text": "What actually sets the price of a detail — and how to have your exact quote before you book.",
                             "href": "/blog/mobile-detailing-cost-casa-grande/",
                         },
                         {
@@ -47,14 +47,14 @@ BLOG_PAGES = [
         "priority": "0.7",
         "og_type": "article",
         "title": "How Much Does Mobile Car Detailing Cost in Casa Grande, AZ? (2026 Guide)",
-        "desc": "Real 2026 mobile detailing prices in Casa Grande AZ: exterior from $69, interiors from $139, full details $199–$299 — and what makes a quote go up or down.",
+        "desc": "How mobile detailing is priced in Casa Grande AZ in 2026 — what drives the number up or down, and how to get your exact quote before you book.",
         "h1": "How much does mobile car detailing cost in Casa Grande, AZ?",
-        "hero_sub": "The straight answer, with our actual price list — because “call for a quote” is a stall, not an answer.",
+        "hero_sub": "The straight answer on what drives the number — and how to have your exact price in hand before you book.",
         "crumbs": [("Blog", "/blog/"), ("Detailing cost guide", None)],
         "schema_extra": [
             blogposting_schema(
                 "How Much Does Mobile Car Detailing Cost in Casa Grande, AZ? (2026 Guide)",
-                "Real 2026 mobile detailing prices in Casa Grande AZ and what changes them.",
+                "How mobile detailing is priced in Casa Grande AZ and how to get an exact quote upfront.",
                 "/blog/mobile-detailing-cost-casa-grande/",
                 "2026-07-13",
             )
@@ -65,15 +65,15 @@ BLOG_PAGES = [
                 "prose",
                 {
                     "html": f"""
-<p><strong>Short answer for Casa Grande in 2026:</strong> a quality mobile exterior wash &amp; shine runs
-<strong>$69–$109</strong>, an interior deep clean <strong>$139–$199</strong>, and a complete full detail
-<strong>$199–$299</strong>, depending on vehicle size. Those aren't industry averages — they're our
-actual prices, published on our <a href="/pricing/">pricing page</a>.</p>
-<h3>What the market charges</h3>
-<p>Phoenix-metro mobile companies typically run $177–$277 for comparable interior/full details — before
-any travel consideration for Pinal County addresses. Tucson shop pricing is similar ($210–$445 at the
-high end for shop-based complete details). Casa Grande sits in the gap between both metros, which
-historically meant paying city prices <em>plus</em> the “we had to drive out there” premium.</p>
+<p><strong>Short answer for Casa Grande in 2026:</strong> it depends on two things — vehicle size and
+honest condition — which is why any detailer quoting one number before seeing your vehicle is guessing.
+Our approach instead: text a photo, get your <strong>exact price before you book</strong>, and that's
+the number you pay. (Full package details are on the <a href="/pricing/">pricing page</a>.)</p>
+<h3>What the market does</h3>
+<p>Phoenix-metro mobile companies price comparable details at big-city rates — before any travel
+consideration for Pinal County addresses. Tucson shops are an hour the other way. Casa Grande sits in
+the gap between both metros, which historically meant paying city prices <em>plus</em> the “we had to
+drive out there” premium.</p>
 <p>Being based in Casa Grande is our structural advantage — no commute cost to pass on, no shop
 overhead — and it shows up in reviews: <em>“Pricing was half of the quotes I received from several
 others.”</em></p>
@@ -84,12 +84,12 @@ every price is listed by size class.</li>
 <li><strong>Condition.</strong> Average dirty is the listed price. Heavy pet hair, sand infiltration,
 spilled milk in July, or years of skipped cleanings add labor hours — quoted upfront from your photos,
 never sprung on you afterward.</li>
-<li><strong>Extras.</strong> Odor treatment (from $75), pet hair (from $40), headlight restoration
-($60/pair), engine bay ($50). Add what you need, skip what you don't.</li>
+<li><strong>Extras.</strong> Odor treatment, pet hair removal, headlight restoration, engine bay —
+each quoted upfront with your detail. Add what you need, skip what you don't.</li>
 </ul>
 <h3>How to keep the cost down (honestly)</h3>
 <ol>
-<li><strong>Don't wait for “bad enough.”</strong> A $69–$89 monthly wash keeps you out of
+<li><strong>Don't wait for “bad enough.”</strong> A monthly wash &amp; shine keeps you out of
 condition-surcharge territory forever.</li>
 <li><strong>Bundle vehicles.</strong> Two cars, one visit is the most efficient appointment on our board.</li>
 <li><strong>Ask about the maintenance rotation.</strong> Monthly and every-other-month regulars save on
@@ -97,8 +97,8 @@ every visit and get priority scheduling.</li>
 </ol>
 <h3>The real question: what does a cheap wash cost?</h3>
 <p>Tunnel brushes grind desert grit into clear coat (that's what swirl marks are). Baked-in stains and
-smells tank trade-in offers. The $10 wash is often the most expensive option on a long enough timeline —
-appraisers see everything.</p>
+smells tank trade-in offers. The cheap tunnel wash is often the most expensive option on a long enough
+timeline — appraisers see everything.</p>
 <p><strong>Want your exact number?</strong> Text a photo of your vehicle to
 <a href="sms:{TEL}">{PHONE}</a> — Anthony replies the same day with a firm price. No prepayment,
 and you approve the work before paying.</p>
@@ -110,7 +110,7 @@ and you approve the work before paying.</p>
                 {
                     "title": "Cost questions, quick-fire",
                     "items": [
-                        ("Is mobile detailing more expensive than a shop?", "<p>Not here — you skip the shop's rent in the price and the two drop-off trips. Our full details start at $199 at your driveway.</p>"),
+                        ("Is mobile detailing more expensive than a shop?", "<p>Not here — you skip the shop's rent in the price and the two drop-off trips. Same professional result, at your driveway, quoted upfront.</p>"),
                         ("Do you charge more for Maricopa / Eloy / Coolidge?", "<p>No. Everything inside the <a href='/service-areas/'>service area</a> is standard rate — no travel fees.</p>"),
                         ("Deposits?", "<p>Never. You pay after the walk-around, when you're happy.</p>"),
                     ],
@@ -184,7 +184,7 @@ Text <a href="sms:{TEL}">{PHONE}</a> and we'll keep your vehicle on the right si
                     "title": "Monsoon quick answers",
                     "items": [
                         ("A haboob hit yesterday — tunnel wash today?", "<p>Please don't. The brushes are loaded with everyone else's grit. Rinse-only touchless is acceptable triage; a hand wash is the fix.</p>"),
-                        ("Are water spots after monsoon rain permanent?", "<p>Fresh ones, no — wash promptly. Baked in for weeks, they can etch; we offer dedicated spot treatment (from $50) when that's happened.</p>"),
+                        ("Are water spots after monsoon rain permanent?", "<p>Fresh ones, no — wash promptly. Baked in for weeks, they can etch; we offer dedicated spot treatment when that's happened — send a photo for a straight quote.</p>"),
                         ("Does sealant actually help with dust?", "<p>Noticeably. Sealed paint is slick, so dust has less to grab — it rinses instead of bonding. That's why it's included in our wash &amp; shine.</p>"),
                     ],
                 },
