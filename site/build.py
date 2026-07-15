@@ -22,7 +22,13 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parent / "public"
 
 # ---------------------------------------------------------------- business ---
-SITE_URL = "https://supremecleandetailing.com"  # <- set the real domain here
+SITE_URL = "https://supremecleandetailingpro.com"
+
+# GoHighLevel booking calendar (paste the calendar's permanent link / widget URL,
+# e.g. "https://api.leadconnectorhq.com/widget/booking/XXXXXXXX" or your branded
+# link.supremecleandetailingpro.com widget URL). When set, /book/ renders the
+# calendar embed with the request form as a fallback below it.
+GHL_CALENDAR_URL = ""
 BIZ = {
     "name": "Supreme Clean Detailing",
     "owner": "Anthony",
@@ -236,11 +242,27 @@ def s_gallery_ph(d) -> str:
 
 
 def s_form(d) -> str:
+    # When a GoHighLevel calendar is configured, embed it as the primary booking
+    # path (books straight into the CRM pipeline); the request form stays below
+    # as a fallback for people who don't want to pick a slot.
+    ghl = ""
+    form_title = "Request your appointment"
+    if GHL_CALENDAR_URL:
+        ghl = (
+            '<h2>Pick your time</h2>'
+            '<p class="sub">Live availability — booked straight onto '
+            f"{BIZ['owner']}'s calendar. No prepayment.</p>"
+            f'<div class="ghl-embed"><iframe src="{GHL_CALENDAR_URL}" '
+            'title="Book your detailing appointment" loading="lazy" '
+            'scrolling="no" id="ghl-booking"></iframe></div>'
+            '<script src="https://link.msgsndr.com/js/form_embed.js" async></script>'
+        )
+        form_title = "Prefer to send details instead?"
     # FormSubmit relay: first submission emails a one-time activation link to the
     # business inbox; after confirming, submissions arrive as email. No account needed.
     action = f"https://formsubmit.co/{BIZ['email']}"
     return f"""<section class="sec"><div class="wrap wrap-nar">
-<h2>Request your appointment</h2>
+{ghl}<h2>{form_title}</h2>
 <p class="sub">Fastest: <a href="sms:{BIZ['phone_e164']}">text {BIZ['phone_display']}</a> with your vehicle + a photo or two.
 Prefer a form? This goes straight to {BIZ['owner']} and he replies the same day.</p>
 <form class="book-form" action="{action}" method="POST">

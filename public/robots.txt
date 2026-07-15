@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://supremecleandetailing.com/sitemap.xml
+Sitemap: https://supremecleandetailingpro.com/sitemap.xml
