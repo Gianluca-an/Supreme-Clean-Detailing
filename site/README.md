@@ -21,7 +21,34 @@ Built from the competitive teardown in `research/az-detailing-market-teardown.md
 python3 site/build.py     # writes ./public  (stdlib only, no pip installs)
 ```
 
-## Deploy — Namecheap (cPanel), the planned host
+## Deploy — Cloudflare Pages (recommended: free, fastest, keeps all SEO)
+
+Cloudflare Pages serves the committed `public/` folder as-is — clean URLs,
+automatic HTTPS, global CDN, `404.html` routing, and gzip/brotli are all
+built in. The generated `public/_headers` adds caching + security headers.
+(The `.htaccess` is ignored by Cloudflare; it's only for the Namecheap path.)
+
+**Direct Upload (simplest — no GitHub/branch setup):**
+1. Unzip `supremecleandetailingpro-site.zip`.
+2. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** →
+   **Upload assets**. Name it `supreme-clean`.
+3. Drag the unzipped **folder** in → **Deploy**. You get a live
+   `*.pages.dev` URL immediately to test.
+4. **Custom domain:** the project → **Custom domains** → **Set up a domain**
+   → enter `supremecleandetailingpro.com`. Cloudflare shows the DNS record to
+   add. Since the domain is registered at Namecheap: Namecheap → Domain List →
+   Manage → **Advanced DNS** → add the CNAME/record Cloudflare specifies
+   (or move nameservers to Cloudflare if it offers that — either works).
+5. (Optional) add `www` as a second custom domain and create a Redirect Rule
+   www → apex. Not required — every page already self-canonicals to the apex.
+
+Redeploys: rebuild locally (`python3 site/build.py`) → new deployment →
+drag the folder again. (Or connect the GitHub repo with build command
+`python3 site/build.py`, output dir `public`, for auto-deploy on push.)
+
+GoHighLevel keeps doing booking + CRM; only the site lives on Cloudflare.
+
+## Deploy — Namecheap (cPanel), alternative paid host
 
 Every build produces a ready-to-upload bundle at the repo root:
 **`supremecleandetailingpro-site.zip`** (the contents of `public/`,

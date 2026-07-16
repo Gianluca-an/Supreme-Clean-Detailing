@@ -698,8 +698,11 @@ def build(pages) -> None:
     if gal.exists() and any(gal.iterdir()):
         shutil.copytree(gal, OUT / "assets" / "gallery")
 
-    # Apache/LiteSpeed config for Namecheap cPanel hosting
+    # Apache/LiteSpeed config for Namecheap cPanel hosting (ignored by Cloudflare)
     (OUT / ".htaccess").write_text(HTACCESS, encoding="utf-8")
+    # Cloudflare Pages config: caching + security headers (HTTPS, clean URLs,
+    # gzip/brotli and 404.html routing are automatic on Pages).
+    (OUT / "_headers").write_text(CF_HEADERS, encoding="utf-8")
 
     urls = []
     for p in pages:
@@ -756,6 +759,16 @@ ExpiresByType text/html "access plus 1 hour"
 Header always set X-Content-Type-Options "nosniff"
 Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+"""
+
+# Cloudflare Pages _headers — applied top-down, most-specific path wins.
+CF_HEADERS = """/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
 """
 
 
