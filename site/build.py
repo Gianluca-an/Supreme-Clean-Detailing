@@ -439,8 +439,9 @@ def nav_html(active: str) -> str:
 
 
 def header(active: str) -> str:
+    # (Promo bar removed. To add a real seasonal offer later, drop a
+    #  <div class="promo"><p>…</p></div> here — the .promo styles still exist.)
     return f"""<a class="skip" href="#main">Skip to content</a>
-<div class="promo"><p><strong>Desert Special:</strong> mention code <strong>SHINE</strong> when you book this month — free interior scent upgrade. <a href="/book/">Book now →</a></p></div>
 <header class="hd"><div class="wrap hd-in">
   <a class="brand" href="/">{LOGO}<span class="brand-t">Supreme Clean<em>Detailing</em></span></a>
   <input id="nav-t" type="checkbox" class="nav-t" aria-hidden="true">
