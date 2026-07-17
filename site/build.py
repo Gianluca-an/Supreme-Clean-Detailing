@@ -188,7 +188,7 @@ WASH_JS = (
     "try{sessionStorage.setItem('scd_intro','1');}catch(e){}"
     "document.documentElement.style.overflow='hidden';"
     "var b=w.querySelector('.wash-skip');if(b)b.addEventListener('click',d);"
-    "setTimeout(d,2600);})();</script>"
+    "setTimeout(d,3400);})();</script>"
 )
 
 # ----------------------------------------------------------------- helpers ---

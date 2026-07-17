@@ -86,7 +86,7 @@ strong{font-weight:600;color:var(--foam)}
 /* ---------------- intro wash (homepage only) ---------------- */
 #wash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
   overflow:hidden;background:radial-gradient(120% 80% at 50% 0%, #0c2c38 0%, #061821 60%, #030f15 100%);
-  animation:washout .8s ease 2.9s forwards}   /* no-JS safety: fades itself out */
+  animation:washout .8s ease 3.7s forwards}   /* no-JS safety: fades just after the JS dismiss */
 @keyframes washout{to{opacity:0;visibility:hidden;pointer-events:none}}
 #wash.gone{animation:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .55s ease,visibility .55s ease}
 #wash .droplet{position:absolute;top:-12%;width:3px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
@@ -95,7 +95,7 @@ strong{font-weight:600;color:var(--foam)}
 @keyframes wfall{0%{transform:translateY(-20vh) scale(.6);opacity:0}10%{opacity:1}90%{opacity:1}
   100%{transform:translateY(120vh) scale(1);opacity:0}}
 #wash .blade{position:absolute;top:0;left:-60%;width:60%;height:200%;transform:rotate(8deg);filter:blur(1px);
-  pointer-events:none;animation:wblade 2.5s cubic-bezier(.6,.05,.3,1) .5s forwards;
+  pointer-events:none;animation:wblade 2.9s cubic-bezier(.6,.05,.3,1) .6s forwards;
   background:linear-gradient(90deg,rgba(243,249,250,0) 0%,rgba(207,231,234,.15) 30%,rgba(243,249,250,.85) 48%,
     rgba(255,255,255,.95) 50%,rgba(207,231,234,.15) 70%,rgba(243,249,250,0) 100%)}
 @keyframes wblade{0%{left:-60%}100%{left:120%}}
