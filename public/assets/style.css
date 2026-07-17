@@ -83,6 +83,35 @@ strong{font-weight:600;color:var(--foam)}
   .rv{opacity:1 !important;transform:none !important}
 }
 
+/* ---------------- intro wash (homepage only) ---------------- */
+#wash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:radial-gradient(120% 80% at 50% 0%, #0c2c38 0%, #061821 60%, #030f15 100%);
+  animation:washout .8s ease 2.9s forwards}   /* no-JS safety: fades itself out */
+@keyframes washout{to{opacity:0;visibility:hidden;pointer-events:none}}
+#wash.gone{animation:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .55s ease,visibility .55s ease}
+#wash .droplet{position:absolute;top:-12%;width:3px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  background:linear-gradient(180deg,rgba(159,224,232,0),rgba(159,224,232,.9));
+  filter:blur(.4px);box-shadow:0 0 6px rgba(159,224,232,.4);animation:wfall linear infinite}
+@keyframes wfall{0%{transform:translateY(-20vh) scale(.6);opacity:0}10%{opacity:1}90%{opacity:1}
+  100%{transform:translateY(120vh) scale(1);opacity:0}}
+#wash .blade{position:absolute;top:0;left:-60%;width:60%;height:200%;transform:rotate(8deg);filter:blur(1px);
+  pointer-events:none;animation:wblade 2.5s cubic-bezier(.6,.05,.3,1) .5s forwards;
+  background:linear-gradient(90deg,rgba(243,249,250,0) 0%,rgba(207,231,234,.15) 30%,rgba(243,249,250,.85) 48%,
+    rgba(255,255,255,.95) 50%,rgba(207,231,234,.15) 70%,rgba(243,249,250,0) 100%)}
+@keyframes wblade{0%{left:-60%}100%{left:120%}}
+.wash-in{position:relative;z-index:2;text-align:center;padding:0 var(--s5);max-width:760px}
+.wash-in .eyebrow{margin-bottom:var(--s4);animation:washword 1.2s ease .15s both}
+.wash-in h1{font-family:var(--serif);font-weight:300;font-size:clamp(44px,9vw,88px);color:var(--foam);
+  letter-spacing:-.01em;margin:0 0 var(--s4);animation:washword 1.3s ease .4s both}
+.wash-in h1 em{font-style:italic;color:var(--accent)}
+.wash-in p{color:var(--mist-72);max-width:44ch;margin:0 auto;font-size:var(--t-md);animation:washword 1.3s ease .7s both}
+@keyframes washword{0%{opacity:0;transform:translateY(12px);filter:blur(7px)}100%{opacity:1;transform:none;filter:blur(0)}}
+.wash-skip{position:absolute;bottom:26px;right:26px;font-family:var(--sans);font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--mist-55);background:transparent;border:1px solid var(--line-strong);
+  padding:10px 18px;border-radius:999px;cursor:pointer;transition:color .3s,border-color .3s}
+.wash-skip:hover{color:var(--foam);border-color:var(--accent)}
+@media (prefers-reduced-motion:reduce){#wash{display:none}}
+
 /* ---------------- buttons ---------------- */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);white-space:nowrap;

@@ -150,6 +150,47 @@ def bubbles_html() -> str:
     )
     return f'<div class="bubbles" aria-hidden="true">{spans}</div>'
 
+
+def wash_html() -> str:
+    """Homepage-only 'clean beginning' intro wash — falling droplets + a squeegee
+    blade wipe over the brand mark. Content renders behind it (SEO intact); it
+    auto-dismisses (CSS fallback + JS), plays once per session, and is skippable."""
+    import random
+
+    rnd = random.Random(7)  # seeded -> identical output every build
+    drops = "".join(
+        f'<span class="droplet" style="left:{rnd.uniform(1,99):.1f}%;'
+        f'height:{rnd.uniform(8,22):.0f}px;'
+        f'animation-duration:{rnd.uniform(1.1,2.6):.2f}s;'
+        f'animation-delay:{rnd.uniform(0,1.2):.2f}s;'
+        f'opacity:{rnd.uniform(.35,.9):.2f}"></span>'
+        for _ in range(40)
+    )
+    return (
+        '<div id="wash" aria-hidden="true"><div class="blade"></div>'
+        f"{drops}"
+        '<div class="wash-in">'
+        '<p class="eyebrow">Supreme Clean Detailing · Casa Grande, AZ</p>'
+        '<h1>A clean <em>beginning</em>.</h1>'
+        '<p>The water, the foam, and the patience of a perfect finish — brought to your driveway.</p>'
+        "</div>"
+        '<button type="button" class="wash-skip" aria-label="Skip intro">Skip intro</button>'
+        "</div>"
+    )
+
+
+WASH_JS = (
+    "<script>(function(){var w=document.getElementById('wash');if(!w)return;"
+    "var m=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;"
+    "function d(){w.classList.add('gone');document.documentElement.style.overflow='';"
+    "setTimeout(function(){w.style.display='none';},600);}"
+    "if(m||sessionStorage.getItem('scd_intro')){w.style.display='none';return;}"
+    "try{sessionStorage.setItem('scd_intro','1');}catch(e){}"
+    "document.documentElement.style.overflow='hidden';"
+    "var b=w.querySelector('.wash-skip');if(b)b.addEventListener('click',d);"
+    "setTimeout(d,2600);})();</script>"
+)
+
 # ----------------------------------------------------------------- helpers ---
 
 
@@ -644,6 +685,9 @@ def render_page(p) -> str:
     body_sections = "".join(RENDER[kind](data) for kind, data in p.get("sections", []))
     hero_html = hero(p) if p.get("h1") else ""
     noindex = '<meta name="robots" content="noindex">' if p.get("noindex") else ""
+    is_home = p["slug"] == ""
+    wash = wash_html() if is_home else ""
+    wash_js = WASH_JS if is_home else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -671,7 +715,7 @@ def render_page(p) -> str:
 {schema}
 </head>
 <body>
-<div class="grain" aria-hidden="true"></div>
+{wash}<div class="grain" aria-hidden="true"></div>
 {header(p.get('nav_active',''))}
 <main id="main">
 {crumbs_html(p)}
@@ -679,7 +723,7 @@ def render_page(p) -> str:
 {body_sections}
 </main>
 {footer()}
-</body>
+{wash_js}</body>
 </html>"""
 
 
