@@ -256,8 +256,11 @@ strong{font-weight:600;color:var(--foam)}
 .grid{display:grid;gap:var(--s5)}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1080px){.g4{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:940px){.g3{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.g3,.g2{grid-template-columns:1fr}}
+@media(max-width:560px){.g4{grid-template-columns:1fr}}
 
 .card{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);
   padding:var(--s5);display:flex;flex-direction:column;gap:var(--s2);color:var(--foam);
@@ -284,13 +287,24 @@ a.card:hover{text-decoration:none;border-color:rgba(159,224,232,.5);transform:tr
 .tier h3{font-size:26px}
 .p-tag{color:var(--mist-72);font-size:var(--t-sm);margin:0;line-height:1.6}
 .p-rows{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--s2) 0;margin-top:var(--s2)}
-.p-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;font-size:var(--t-sm);color:var(--mist)}
-.p-row strong{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--foam)}
+.p-row{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3);padding:7px 0;font-size:var(--t-sm);color:var(--mist)}
+.p-price{display:inline-flex;align-items:baseline;gap:8px;white-space:nowrap}
+.p-price strong{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--foam)}
+.p-was{font-family:var(--serif);font-size:16px;color:var(--mist-55);text-decoration:line-through;text-decoration-color:rgba(159,224,232,.7)}
 .p-time{display:flex;align-items:center;gap:var(--s2);color:var(--mist-55);font-size:12.5px;letter-spacing:.06em;margin:0}
+.p-save{display:flex;gap:8px;align-items:flex-start;margin:0;padding:9px 12px;border-radius:var(--radius-sm);
+  background:rgba(159,224,232,.1);border:1px solid rgba(159,224,232,.28);color:var(--foam);
+  font-family:var(--sans);font-size:12.5px;line-height:1.45;font-weight:500}
+.p-save .ic{color:var(--accent);flex:none;width:16px;height:16px;margin-top:1px}
 .p-inc{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:var(--t-sm);color:var(--mist-72)}
 .p-inc li{display:flex;gap:var(--s2);align-items:flex-start;line-height:1.5}
 .p-inc .ic{color:var(--ok);margin-top:4px}
 .tier .btn{margin-top:auto}
+.tiers-solo{max-width:560px;margin-inline:auto}
+/* four-up pricing packs tighter than three-up */
+.g4.tiers .tier{padding:var(--s5) var(--s4)}
+.g4.tiers .tier h3{font-size:22px}
+.g4.tiers .p-price strong{font-size:22px}
 .p-note{color:var(--mist-55);font-size:13.5px;margin-top:var(--s5);max-width:72ch;line-height:1.7}
 
 /* ---------------- addons ---------------- */

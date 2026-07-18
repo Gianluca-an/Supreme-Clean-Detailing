@@ -35,9 +35,9 @@ GHL_CALENDAR_URL = (
     "&showCalendarDescription=true&showCalendarDetails=true&default=false"
 )
 
-# Flip to True (and restore the PRICE-SLOT values noted in the content files)
-# once Anthony's real price list is confirmed.
-PRICES_LIVE = False
+# Real, owner-confirmed pricing is live (Anthony's July 2025 list, raised 5% and
+# rounded to clean $5s). Re-enables Service/AggregateOffer + priceRange schema.
+PRICES_LIVE = True
 BIZ = {
     "name": "Supreme Clean Detailing",
     "owner": "Anthony",
@@ -234,22 +234,31 @@ def s_cards(d) -> str:
 def s_pricing(d) -> str:
     tiers = []
     for t in d["tiers"]:
-        rows = "".join(
-            f'<div class="p-row"><span>{label}</span><strong>{price}</strong></div>' for label, price in t["prices"]
-        )
+        # each price row is (size_label, price) or (size_label, price, was_price)
+        rows = ""
+        for row in t["prices"]:
+            label, price = row[0], row[1]
+            was = f'<span class="p-was">{row[2]}</span>' if len(row) > 2 and row[2] else ""
+            rows += (
+                f'<div class="p-row"><span>{label}</span>'
+                f'<span class="p-price">{was}<strong>{price}</strong></span></div>'
+            )
         inc = "".join(f"<li>{icon('check')}{x}</li>" for x in t.get("includes", []))
         badge = '<span class="badge">Most popular</span>' if t.get("popular") else ""
         time_line = f'<p class="p-time">{icon("clock")} {t["time"]}</p>' if t.get("time") else ""
+        save_line = f'<p class="p-save">{icon("sparkle")}<span>{t["save"]}</span></p>' if t.get("save") else ""
         tiers.append(
             f'<div class="tier{" tier-pop" if t.get("popular") else ""}">{badge}'
             f'<h3>{t["name"]}</h3><p class="p-tag">{t["tagline"]}</p>'
-            f'<div class="p-rows">{rows}</div>{time_line}'
+            f'<div class="p-rows">{rows}</div>{time_line}{save_line}'
             f'<ul class="p-inc">{inc}</ul>'
             f'<a class="btn btn-primary" href="/book/">Book this detail</a></div>'
         )
     note = f'<p class="p-note">{d["note"]}</p>' if d.get("note") else ""
     head = section_head(d)
-    return f'<section class="sec" id="pricing"><div class="wrap">{head}<div class="grid g3 tiers">{"".join(tiers)}</div>{note}</div></section>'
+    # grid columns follow tier count: 1 -> centered solo, 2 -> pair, 4 -> quad, else 3
+    grid = {1: "tiers-solo", 2: "g2 tiers", 4: "g4 tiers"}.get(len(d["tiers"]), "g3 tiers")
+    return f'<section class="sec" id="pricing"><div class="wrap">{head}<div class="grid {grid}">{"".join(tiers)}</div>{note}</div></section>'
 
 
 def s_addons(d) -> str:
@@ -560,7 +569,6 @@ def base_schema(p) -> list[dict]:
         "url": SITE_URL + "/",
         "telephone": BIZ["phone_e164"],
         "email": BIZ["email"],
-        # PRICE-SLOT: restore "priceRange" (e.g. "$69 - $299") when PRICES_LIVE
         "image": SITE_URL + "/assets/og-card.png",
         "address": {
             "@type": "PostalAddress",
@@ -601,6 +609,8 @@ def base_schema(p) -> list[dict]:
         ],
         "sameAs": [BIZ["gbp_url"]],
     }
+    if PRICES_LIVE:
+        biz["priceRange"] = "$45 - $225"
     out = [biz]
     if p["slug"] == "":
         out.append(

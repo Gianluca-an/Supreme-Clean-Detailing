@@ -3,7 +3,10 @@ Each carries: keyworded title/H1, unique 500-900 word copy, its own price table,
 FAQPage schema, a matching real review, and Service+AggregateOffer JSON-LD."""
 
 from build import BIZ, service_schema
-from content_core import TRUSTBAR, CTA, ADDONS
+from content_core import (
+    TRUSTBAR, CTA, ADDONS,
+    TIER_EXTERIOR, TIER_INTERIOR, TIER_BASIC, TIER_SUPREME,
+)
 
 TEL = BIZ["phone_e164"]
 PHONE = BIZ["phone_display"]
@@ -36,14 +39,14 @@ SERVICE_PAGES = [
         "Full Car Detail in Casa Grande, AZ — Mobile, We Come to You | Supreme Clean Detailing",
         "Complete interior + exterior detail at your driveway in Casa Grande, Maricopa & nearby. Quoted upfront by vehicle size, 5.0★ rated, no prepayment. ☎ (520) 840-2452",
         "The Full Detail: inside and out, back to day one",
-        "Our most-booked service. A complete interior deep clean plus a proper exterior hand wash and protection — one visit, one fair price, at your home or work.",
-        199,
-        299,
+        "Two levels — a Basic Full Detail for regular upkeep, and our most-booked Supreme Full Detail with a complete interior deep clean and hand-applied wax. One visit, at your home or work.",
+        115,
+        225,
         [
             (
                 "prose",
                 {
-                    "title": "What a Supreme Clean full detail includes",
+                    "title": "What the Supreme Full Detail includes",
                     "html": """
 <p>This is the full reset. Inside: complete vacuum (including trunk and seat rails), steam cleaning of
 hard surfaces, carpet and mat shampoo, seats deep-cleaned whether cloth or leather, door jambs, vents,
@@ -66,33 +69,10 @@ things like <em>“literally came back brand new, smelled new and looked even ne
                 },
             ),
             price_block(
-                "Full Detail pricing",
-                "By vehicle size, confirmed from your photos before booking.",
-                [
-                    {
-                        "name": "Car / Coupe",
-                        "tagline": "Sedans, coupes, hatchbacks",
-                        "prices": [("Full Detail", "quoted upfront")],
-                        "time": "About 3–4 hours",
-                        "includes": ["Complete interior deep clean", "Two-bucket exterior hand wash", "Wheels, tires &amp; wells", "Spray sealant protection", "Walk-around approval"],
-                    },
-                    {
-                        "name": "Truck / SUV",
-                        "tagline": "Half-tons, 2-row SUVs, crossovers",
-                        "popular": True,
-                        "prices": [("Full Detail", "quoted upfront")],
-                        "time": "About 4–5 hours",
-                        "includes": ["Everything in Car / Coupe", "Extra cabin volume covered", "Bed or cargo area cleaned", "Running boards &amp; steps"],
-                    },
-                    {
-                        "name": "XL / 3-Row / Van",
-                        "tagline": "Tahoes, minivans, lifted trucks",
-                        "prices": [("Full Detail", "quoted upfront")],
-                        "time": "About 5 hours",
-                        "includes": ["Everything in Truck / SUV", "Third row + full cargo area", "Extra glass &amp; jambs"],
-                    },
-                ],
-                note="Heavy pet hair, sand or long-neglected interiors may add time — you'll know the exact price before we start. Add-ons below can be bolted on same-visit.",
+                "Full Detail pricing — Basic vs. Supreme",
+                "Two levels, priced by vehicle size. The Supreme is our most-booked — it includes the full interior deep clean and hand-applied wax at a bundled discount (15% off cars, trucks &amp; SUVs, 20% off XL).",
+                [TIER_BASIC, TIER_SUPREME],
+                note="Heavy pet hair, sand or long-neglected interiors may add time — you'll know the exact price from your photos before we start. Add-ons below can be bolted on same-visit.",
             ),
             ADDONS,
             (
@@ -129,8 +109,8 @@ things like <em>“literally came back brand new, smelled new and looked even ne
         "Interior deep clean at your driveway: steam, shampoo, stain & odor treatment. Quoted upfront by vehicle size in Casa Grande, Maricopa & nearby. ☎ (520) 840-2452",
         "Interior deep clean: every vent, seam and cupholder",
         "The Arizona interior enemy list — dust, UV, spills, pet hair, mystery smells — handled in one visit at your home or office.",
-        139,
-        199,
+        125,
+        170,
         [
             (
                 "prose",
@@ -151,11 +131,7 @@ clean since I bought it,”</em> as one review puts it.</p>
             price_block(
                 "Interior Deep Clean pricing",
                 "By vehicle size — exact quote from your photos before booking.",
-                [
-                    {"name": "Car / Coupe", "tagline": "Sedans, coupes, hatchbacks", "prices": [("Interior Deep Clean", "quoted upfront")], "time": "About 2 hours", "includes": ["Full vacuum incl. trunk", "Steam-clean hard surfaces", "Carpet &amp; mat shampoo", "Seats deep-cleaned", "Interior glass"]},
-                    {"name": "Truck / SUV", "tagline": "Half-tons, 2-row SUVs", "popular": True, "prices": [("Interior Deep Clean", "quoted upfront")], "time": "About 2.5 hours", "includes": ["Everything in Car / Coupe", "Extra cabin volume", "Cargo area included"]},
-                    {"name": "XL / 3-Row / Van", "tagline": "3-rows, minivans, crew cabs", "prices": [("Interior Deep Clean", "quoted upfront")], "time": "About 3 hours", "includes": ["Everything in Truck / SUV", "Third row + rear cargo", "Extra jambs &amp; glass"]},
-                ],
+                [TIER_INTERIOR],
             ),
             (
                 "reviews",
@@ -191,8 +167,8 @@ clean since I bought it,”</em> as one review puts it.</p>
         "Proper two-bucket hand wash, wheels, glass & sealant at your driveway — quoted upfront. The safe alternative to tunnel washes in Casa Grande & Maricopa AZ. ☎ (520) 840-2452",
         "Exterior wash &amp; shine — never a swirl-mark tunnel wash",
         "Drive-through washes drag yesterday's grit across your clear coat. We hand-wash with clean media, panel by panel, then seal the shine against desert sun.",
-        69,
-        109,
+        55,
+        75,
         [
             (
                 "prose",
@@ -211,12 +187,8 @@ plan is for (regulars save on every visit; ask when you book).</p>
             price_block(
                 "Exterior pricing",
                 "Flat by size, at your location — no travel fees in our service area.",
-                [
-                    {"name": "Car / Coupe", "tagline": "", "prices": [("Wash & Shine", "quoted upfront")], "time": "About 1 hour", "includes": ["Foam hand wash &amp; towel dry", "Wheels, tires &amp; wells", "Bug &amp; light spot removal", "Glass + spray sealant"]},
-                    {"name": "Truck / SUV", "tagline": "", "popular": True, "prices": [("Wash & Shine", "quoted upfront")], "time": "About 1.25 hours", "includes": ["Everything in Car / Coupe", "Extra panel area", "Running boards &amp; steps"]},
-                    {"name": "XL / 3-Row / Lifted", "tagline": "", "prices": [("Wash & Shine", "quoted upfront")], "time": "About 1.5 hours", "includes": ["Everything in Truck / SUV", "Lifted / dually friendly", "Extra glass &amp; trim"]},
-                ],
-                note="Add the wax/sealant upgrade for months of extra protection, or headlight restoration while we're there — both quoted with your wash.",
+                [TIER_EXTERIOR],
+                note="Add the wax/sealant upgrade (+$20) for months of extra protection, clay bar &amp; seal ($65) for a glass-smooth finish, or headlight restoration ($55/headlight) while we're there.",
             ),
             (
                 "reviews",
@@ -251,8 +223,8 @@ plan is for (regulars save on every visit; ask when you book).</p>
         "We remove car odors at the source — smoke, pets, spilled milk, moisture. Proven results in Casa Grande & Maricopa AZ (read the reviews). ☎ (520) 840-2452",
         "Odor removal that treats the source — not perfume over the problem",
         "A smell lives somewhere: in carpet padding, seat foam, vents. We find it, extract it, and treat it. One customer's review: “they were able to remove a smell I had in my car.”",
-        75,
-        225,
+        0,
+        0,
         [
             (
                 "prose",
@@ -311,8 +283,8 @@ second treatment — you'll get an honest read from the photos and a firm price 
         "Embedded dog & cat hair removed from car carpet and seats with a proper two-step process. Quoted upfront with any detail in Casa Grande & Maricopa AZ. ☎ (520) 840-2452",
         "Pet hair removal that actually gets it all",
         "A regular vacuum leaves woven-in fur behind. Our two-step process lifts embedded hair out of carpet and upholstery — the difference between “vacuumed” and “no dog in this truck, ever.”",
-        40,
-        120,
+        0,
+        0,
         [
             (
                 "prose",
@@ -366,11 +338,11 @@ Combined with an interior deep clean, the cabin also stops <em>smelling</em> lik
         "headlight-restoration",
         "Headlight Restoration",
         "Headlight Restoration — Casa Grande, AZ | Supreme Clean Detailing",
-        "Cloudy yellow headlights restored & UV-sealed at your driveway in Casa Grande & Maricopa AZ — flat per-pair quote. See clearly, look newer, drive safer. ☎ (520) 840-2452",
+        "Cloudy yellow headlights restored & UV-sealed at your driveway in Casa Grande & Maricopa AZ — $55 per headlight. See clearly, look newer, drive safer. ☎ (520) 840-2452",
         "Headlight restoration: see clearly again",
         "Arizona UV turns polycarbonate lenses yellow and blind. We wet-sand, polish and seal them back to clear — at your driveway, in about an hour.",
-        60,
-        60,
+        55,
+        110,
         [
             (
                 "prose",
@@ -379,8 +351,9 @@ Combined with an interior deep clean, the cabin also stops <em>smelling</em> lik
                     "html": """
 <p>Oxidized headlights can cut usable light output dramatically — exactly what you don't want on an
 unlit farm road or I-8 at night. Replacement housings run hundreds per side at a dealer. Restoration
-is one flat per-pair quote: progressive wet-sanding to remove the dead UV-burned layer, machine polish
-back to optical clarity, then a UV sealant so it lasts instead of hazing back in a month.</p>
+is a flat <strong>$55 per headlight</strong> ($110 for the pair): progressive wet-sanding to remove the
+dead UV-burned layer, machine polish back to optical clarity, then a UV sealant so it lasts instead of
+hazing back in a month.</p>
 <p>It's also the single highest-impact small fix you can buy before selling a vehicle — yellowed lights
 read as “old car” from across the lot.</p>
 """,
@@ -388,9 +361,9 @@ read as “old car” from across the lot.</p>
             ),
             price_block(
                 "Headlight pricing",
-                "Flat and simple.",
+                "Flat and simple — priced per headlight.",
                 [
-                    {"name": "Headlight Restoration", "tagline": "Both lenses, restored + sealed", "popular": True, "prices": [("Per pair", "flat quote")], "time": "About 1 hour", "includes": ["Wet-sand oxidation removal", "Machine polish to clarity", "UV sealant applied", "Standalone or with any detail"]},
+                    {"name": "Headlight Restoration", "tagline": "Wet-sanded, polished &amp; UV-sealed", "popular": True, "prices": [("Per headlight", "$55"), ("Both headlights", "$110")], "time": "About 1 hour", "includes": ["Wet-sand oxidation removal", "Machine polish to clarity", "UV sealant applied", "Standalone or with any detail"]},
                 ],
             ),
             (
@@ -414,8 +387,8 @@ read as “old car” from across the lot.</p>
         "Mobile fleet washing & detailing for Pinal County businesses: work trucks, vans & crew vehicles cleaned at your yard on a schedule. Custom quotes. ☎ (520) 840-2452",
         "Your trucks are your brand. We keep them spotless.",
         "Scheduled washing and detailing for work trucks, vans and small fleets — at your yard, before or after crew hours, with one simple invoice.",
-        99,
-        999,
+        0,
+        0,
         [
             (
                 "prose",

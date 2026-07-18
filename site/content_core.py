@@ -28,72 +28,112 @@ TRUSTBAR = (
     },
 )
 
-# PRICE-SLOT: when Anthony's price list is confirmed, restore per-size rows,
-# e.g. prices=[("Car / coupe","$..."),("Truck / SUV","$..."),("XL / 3-row","$...")]
-# and the "starting points" note (see git history for the original wording).
-PRICING_TIERS = {
-    "title": "Packages, sized to your vehicle",
-    "sub": "Three packages, priced by vehicle size and condition — and quoted upfront, before you book. Text a photo and the number you're given is the number you pay. Never a deposit, never prepayment.",
-    "tiers": [
-        {
-            "name": "Exterior Wash & Shine",
-            "tagline": "Hand wash the desert dust off — never a scratchy tunnel wash.",
-            "prices": [("Your exact price", "quoted upfront")],
-            "time": "About 1–1.5 hours",
-            "includes": [
-                "Foam hand wash &amp; soft-towel dry",
-                "Wheels, tires &amp; wheel wells cleaned",
-                "Tire shine + trim dressing",
-                "Bug &amp; light water-spot removal",
-                "Streak-free exterior glass",
-                "Spray sealant for gloss &amp; protection",
-            ],
-        },
-        {
-            "name": "Interior Deep Clean",
-            "tagline": "Every vent, seam and cupholder — like the day you bought it.",
-            "prices": [("Your exact price", "quoted upfront")],
-            "time": "About 2–3 hours",
-            "includes": [
-                "Full vacuum incl. trunk &amp; seat rails",
-                "Steam clean of hard surfaces",
-                "Carpet &amp; mat shampoo (light stains)",
-                "Seats deep-cleaned (cloth or leather)",
-                "Door jambs, vents, console detailed",
-                "Interior glass + fresh finish scent",
-            ],
-        },
-        {
-            "name": "Full Detail",
-            "tagline": "Interior + exterior in one visit. Our most-booked service.",
-            "popular": True,
-            "prices": [("Your exact price", "quoted upfront")],
-            "time": "About 3–5 hours",
-            "includes": [
-                "Everything in Interior Deep Clean",
-                "Everything in Exterior Wash &amp; Shine",
-                "Door jambs &amp; trunk seals detailed",
-                "Engine bay wipe-down on request",
-                "Final walk-around with you before we leave",
-            ],
-        },
+# ---- pricing (LIVE) --------------------------------------------------------
+# Owner-confirmed rates (Anthony's July 2025 list, raised 5%, rounded to clean
+# $5s). Tiers are named module-level so the service pages can reuse the exact
+# same numbers. The Supreme Full Detail carries a bundle discount — 15% off
+# cars/trucks/SUVs, 20% off XL — rendered as "was → now" per size (3-tuple rows).
+TIER_EXTERIOR = {
+    "name": "Exterior Wash &amp; Shine",
+    "tagline": "A proper hand wash — desert dust lifted off, never ground in by a tunnel brush.",
+    "prices": [
+        ("Car / coupe", "$55"),
+        ("Truck / SUV", "$65"),
+        ("XL / lifted", "$75"),
     ],
-    "note": "Every quote is set by vehicle size and honest condition (heavy pet hair, sand, spills or long-neglected interiors take more time) — and it's confirmed from your photos before booking, so there are never surprises on the day. Ask about the maintenance rotation: monthly or every-other-month regulars save on each visit.",
+    "time": "About 1–1.5 hours",
+    "includes": [
+        "Foam hand wash &amp; soft-towel dry",
+        "Wheels, tires &amp; wheel wells cleaned",
+        "Tire shine + trim dressing",
+        "Bug &amp; light water-spot removal",
+        "Streak-free exterior glass",
+        "Spray sealant for gloss &amp; protection",
+    ],
 }
 
-# PRICE-SLOT: restore per-add-on prices ("from $40", "$60 / pair", …) when live.
+TIER_INTERIOR = {
+    "name": "Interior Deep Clean",
+    "tagline": "Every vent, seam and cupholder — steamed, shampooed and conditioned like the day you bought it.",
+    "prices": [
+        ("Car / coupe", "$125"),
+        ("Truck", "$135"),
+        ("SUV", "$145"),
+        ("XL truck", "$160"),
+        ("XL SUV", "$170"),
+    ],
+    "time": "About 2–3 hours",
+    "includes": [
+        "Full vacuum incl. trunk &amp; seat rails",
+        "Steam clean of hard surfaces",
+        "Carpet &amp; mat shampoo",
+        "Seats deep-cleaned (cloth or leather)",
+        "Door jambs, vents, console detailed",
+        "Interior glass + fresh finish",
+    ],
+}
+
+TIER_BASIC = {
+    "name": "Basic Full Detail",
+    "tagline": "Inside and out, the essentials done right — a thorough wash plus an interior refresh. Ideal for regular upkeep.",
+    "prices": [
+        ("Car / coupe", "$115"),
+        ("Truck", "$125"),
+        ("SUV", "$135"),
+        ("XL vehicle", "$145"),
+    ],
+    "time": "About 2–3 hours",
+    "includes": [
+        "Exterior hand wash &amp; soft-towel dry",
+        "Wheels, tires &amp; trim dressed",
+        "Full interior vacuum throughout",
+        "Wipe-down of every interior surface",
+        "Interior &amp; exterior glass",
+        "Great value on a monthly rotation",
+    ],
+}
+
+TIER_SUPREME = {
+    "name": "Supreme Full Detail",
+    "tagline": "The complete reset — a full interior deep clean plus exterior wash and hand-applied wax. Our most-booked service.",
+    "popular": True,
+    "prices": [
+        ("Car / coupe", "$145", "$170"),
+        ("Truck", "$155", "$180"),
+        ("SUV", "$160", "$190"),
+        ("XL truck", "$170", "$210"),
+        ("XL SUV", "$180", "$225"),
+    ],
+    "save": "Full-detail savings — 15% off cars, trucks &amp; SUVs · 20% off XL",
+    "time": "About 3–5 hours",
+    "includes": [
+        "Everything in the Interior Deep Clean",
+        "Everything in the Exterior Wash &amp; Shine",
+        "Hand-applied wax / sealant protection",
+        "Door jambs &amp; trunk seals detailed",
+        "Final walk-around before you pay",
+    ],
+}
+
+PRICING_TIERS = {
+    "title": "Packages, priced by vehicle size",
+    "sub": "Real prices — no “call for a quote” games. Text a photo of your vehicle to lock in your exact number by size and condition. Never a deposit, never prepayment.",
+    "tiers": [TIER_EXTERIOR, TIER_INTERIOR, TIER_BASIC, TIER_SUPREME],
+    "note": "Prices are set by vehicle size and honest condition — heavy pet hair, sand, spills or long-neglected interiors take extra time and are quoted upfront from your photos, never sprung on you. Ask about the maintenance rotation: monthly or every-other-month regulars save on every visit.",
+}
+
 ADDONS = (
     "addons",
     {
         "title": "Popular add-ons",
-        "sub": "Bolt these onto any package — or book them on their own. Each is quoted upfront with your detail.",
+        "sub": "Bolt any of these onto a package — or book them on their own.",
         "items": [
+            ("Wax / sealant upgrade", "+$20", "Longer-lasting protection and gloss against the Arizona sun. (Already included in the Supreme Full Detail.)"),
+            ("Clay bar &amp; seal", "$65", "Deep paint decontamination — pulls out bonded fallout and overspray, then seals the finish glass-smooth."),
+            ("Engine bay detail", "$45 · $50 XL", "Careful degrease, gentle rinse and dress — shows like a dealer lot."),
+            ("Headlight restoration", "$55 / headlight", "Cloudy, yellowed lenses wet-sanded, polished and UV-sealed clear again."),
             ("Pet hair removal", "quoted upfront", "Our two-step process pulls embedded hair out of carpet and seats."),
-            ("Odor elimination", "quoted upfront", "Smoke, pets, spilled milk — deep-source treatment, not perfume. Per Kimberly's review: “they were able to remove a smell I had in my car.”"),
-            ("Headlight restoration", "flat per pair", "Cloudy, yellowed lenses restored and sealed — see (and pass inspection) again."),
-            ("Seat & carpet shampoo", "quoted upfront", "Hot-water extraction for tough stains — water spots and set-in marks included."),
-            ("Engine bay detail", "quoted upfront", "Careful degrease, rinse and dress — shows like a dealer lot."),
-            ("Wax / sealant upgrade", "quoted upfront", "Longer-lasting protection against the Arizona sun."),
+            ("Odor elimination", "quoted upfront", "Smoke, pets, spilled milk — treated at the source, not perfumed over. “They were able to remove a smell I had in my car.”"),
         ],
     },
 )
@@ -193,8 +233,8 @@ CORE_PAGES = [
             ("100<i>%</i>", "Satisfaction guarantee"),
         ],
         "hero_card": {
-            "label": "Signature · Full Detail",
-            "price": "Most-booked",  # PRICE-SLOT: "from $..."
+            "label": "Supreme · Full Detail",
+            "price": "from $145",
             "rows": [
                 ("Interior deep clean, steam &amp; shampoo", "2–3 h"),
                 ("Two-bucket hand wash &amp; wheels", "included"),
@@ -212,13 +252,12 @@ CORE_PAGES = [
                     "title": "What we detail",
                     "sub": "Cars, trucks, SUVs, work vehicles — if it drives through Pinal County dust, we make it new again.",
                     "items": [
-                        # PRICE-SLOT: restore "price" keys ("from $…") when live
-                        {"icon": "sparkle", "title": "Full Detail", "text": "Interior + exterior in one visit. The full reset.", "price": "Most-booked", "href": "/services/full-detail/"},
-                        {"icon": "seat", "title": "Interior Deep Clean", "text": "Steam, shampoo, every vent and seam.", "href": "/services/interior-detailing/"},
-                        {"icon": "drop", "title": "Exterior Wash & Shine", "text": "Hand wash, wheels, sealant — zero swirl marks.", "href": "/services/exterior-detailing/"},
+                        {"icon": "sparkle", "title": "Full Detail", "text": "Interior + exterior in one visit. The full reset.", "price": "from $115", "href": "/services/full-detail/"},
+                        {"icon": "seat", "title": "Interior Deep Clean", "text": "Steam, shampoo, every vent and seam.", "price": "from $125", "href": "/services/interior-detailing/"},
+                        {"icon": "drop", "title": "Exterior Wash & Shine", "text": "Hand wash, wheels, sealant — zero swirl marks.", "price": "from $55", "href": "/services/exterior-detailing/"},
                         {"icon": "nose", "title": "Odor Removal", "text": "Smoke, pets, mystery smells — gone at the source.", "href": "/services/odor-removal/"},
                         {"icon": "paw", "title": "Pet Hair Removal", "text": "Embedded hair out of carpets and seats.", "href": "/services/pet-hair-removal/"},
-                        {"icon": "beam", "title": "Headlight Restoration", "text": "Cloudy lenses crystal-clear and sealed.", "href": "/services/headlight-restoration/"},
+                        {"icon": "beam", "title": "Headlight Restoration", "text": "Cloudy lenses crystal-clear and sealed.", "price": "$55 / headlight", "href": "/services/headlight-restoration/"},
                     ],
                 },
             ),
@@ -256,7 +295,7 @@ seats, and smells other shops couldn't fix.</p>
                     "items": [
                         (
                             "How much does mobile detailing cost?",
-                            '<p>It depends on vehicle size and condition — so we quote it upfront instead of surprising you. Text a photo of your vehicle and you\'ll have your exact number before you book. See <a href="/pricing/">packages &amp; pricing</a>.</p>',
+                            '<p>Exterior hand washes start at $55, interior deep cleans at $125, and full details at $115 — all priced by vehicle size. Text a photo of your vehicle and you\'ll have your exact number before you book. See <a href="/pricing/">packages &amp; pricing</a>.</p>',
                         ),
                         (
                             "Do I need to provide water or power?",
@@ -297,13 +336,12 @@ seats, and smells other shops couldn't fix.</p>
                 {
                     "title": "All services",
                     "items": [
-                        # PRICE-SLOT: restore "price" keys ("from $…") when live
-                        {"icon": "sparkle", "title": "Full Detail", "text": "Complete interior + exterior reset in one visit.", "price": "Most-booked", "href": "/services/full-detail/"},
-                        {"icon": "seat", "title": "Interior Deep Clean", "text": "Vacuum, steam, shampoo, condition — every surface.", "href": "/services/interior-detailing/"},
-                        {"icon": "drop", "title": "Exterior Wash & Shine", "text": "Two-bucket hand wash, wheels, glass, sealant.", "href": "/services/exterior-detailing/"},
+                        {"icon": "sparkle", "title": "Full Detail", "text": "Complete interior + exterior reset in one visit.", "price": "from $115", "href": "/services/full-detail/"},
+                        {"icon": "seat", "title": "Interior Deep Clean", "text": "Vacuum, steam, shampoo, condition — every surface.", "price": "from $125", "href": "/services/interior-detailing/"},
+                        {"icon": "drop", "title": "Exterior Wash & Shine", "text": "Two-bucket hand wash, wheels, glass, sealant.", "price": "from $55", "href": "/services/exterior-detailing/"},
                         {"icon": "nose", "title": "Odor Removal", "text": "Treat the source — smoke, pets, food, moisture.", "href": "/services/odor-removal/"},
                         {"icon": "paw", "title": "Pet Hair Removal", "text": "Embedded fur lifted from carpet and upholstery.", "href": "/services/pet-hair-removal/"},
-                        {"icon": "beam", "title": "Headlight Restoration", "text": "Sand, polish, seal — clear lenses that last.", "href": "/services/headlight-restoration/"},
+                        {"icon": "beam", "title": "Headlight Restoration", "text": "Sand, polish, seal — clear lenses that last.", "price": "$55 / headlight", "href": "/services/headlight-restoration/"},
                         {"icon": "truck", "title": "Fleet & Business", "text": "Work trucks and small fleets on a schedule, at your yard.", "price": "custom program", "href": "/services/fleet-detailing/"},
                     ],
                 },

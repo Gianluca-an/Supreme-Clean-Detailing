@@ -79,17 +79,23 @@ with the FormSubmit request form kept below as a fallback. Notes:
 - The GHL resize script (`link.msgsndr.com/js/form_embed.js`) loads on
   /book/ only — the rest of the site remains 0-JS.
 
-## Prices — intentionally OFF right now
+## Prices — LIVE
 
-Per owner request the site currently shows **no dollar figures**: packages
-display inclusions/durations with "quoted upfront" and every page pushes
-text-a-photo quoting. When Anthony's price list is confirmed:
-1. Search the `site/` folder for **`PRICE-SLOT`** — each marker sits where
-   numbers belong (pricing tiers, add-ons, card prices, schema priceRange).
-2. Restore per-size figures (original placeholder wording is in git
-   history: `git show 4b4e353:site/content_core.py`).
-3. Flip **`PRICES_LIVE = True`** in `site/build.py` (re-enables
-   Service/AggregateOffer + priceRange schema), rebuild, re-upload.
+Real, owner-confirmed pricing is in (`PRICES_LIVE = True` in `site/build.py`,
+which turns on Service/AggregateOffer + `priceRange` schema). All numbers live
+in `site/content_core.py`:
+
+- **Four packages**, each priced per vehicle size, as named module-level tiers
+  (`TIER_EXTERIOR`, `TIER_INTERIOR`, `TIER_BASIC`, `TIER_SUPREME`) that the
+  service/city pages reuse so a number is only ever edited in one place.
+- **Supreme Full Detail** carries a bundle discount (15% off cars/trucks/SUVs,
+  20% off XL) shown as `("size", "now", "was")` 3-tuple rows — the third value
+  renders struck-through, and the `"save"` key prints the savings line.
+- **Add-ons** (`ADDONS`) list flat prices where set; pet-hair and odor stay
+  "quoted upfront" (owner gave no figure — do not invent one).
+
+To change a price: edit the tier in `content_core.py`, rebuild, re-upload. To
+pull all prices again, set `PRICES_LIVE = False` (offers/priceRange drop out).
 
 ## Photos — drop-in pipeline
 
@@ -101,7 +107,8 @@ filename. Name files descriptively for SEO, e.g.
 
 ## Owner checklist (remaining)
 
-1. **Prices** — see PRICE-SLOT flow above (arriving today).
+1. **Prices** — ✅ live (see "Prices — LIVE" above). Confirm the size labels and
+   the Supreme discount framing read the way Anthony wants.
 2. **Photos** — see gallery pipeline above (arriving today).
 3. **Hours** — set to Mon–Sat 8–6 in `build.py` (`BIZ["hours_*"]`). Confirm.
 4. **Guarantee wording** — "100% satisfaction — re-done on the spot before
