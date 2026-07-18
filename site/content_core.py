@@ -615,8 +615,14 @@ That work ethic is the business plan. No upsell games, no prepayment, and a simp
                     ],
                 },
             ),
+            (
+                "socials",
+                {
+                    "title": "Follow the work",
+                    "sub": "Fresh before-and-afters on Instagram and TikTok every week — and a Google review means the world to a local owner-operator.",
+                },
+            ),
             ("form", {"calendar": False}),  # /book/ carries the GHL calendar
-            ("map", {}),
             CTA,
         ],
     },

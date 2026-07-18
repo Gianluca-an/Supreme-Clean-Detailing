@@ -52,9 +52,14 @@ BIZ = {
     "review_count": "20",
     "hours_human": "Mon–Sat 8:00 AM – 6:00 PM",
     "hours_schema": ["Mo-Sa 08:00-18:00"],
-    "gbp_url": "https://www.google.com/maps/search/?api=1&query=Supreme+Clean+Detailing+Casa+Grande+AZ",
-    # TODO(owner): replace with the direct "review us" short link from the GBP dashboard
-    "review_url": "https://www.google.com/maps/search/?api=1&query=Supreme+Clean+Detailing+Casa+Grande+AZ",
+    # Owner's real Google Business Profile (share link) — powers "Find us on
+    # Google", the rating link, and schema sameAs.
+    "gbp_url": "https://share.google/82HKSp4gcInryGLCi",
+    # TODO(owner): swap for the direct "write a review" deep link from the GBP
+    # dashboard when available; the listing link works (reviews are one tap in).
+    "review_url": "https://share.google/82HKSp4gcInryGLCi",
+    "instagram": "https://www.instagram.com/supremeclean__detailing/",
+    "tiktok": "https://www.tiktok.com/@supremecleancardetailing",
 }
 CURRENT_YEAR = date.today().year
 
@@ -96,6 +101,9 @@ ICONS = {
     "drop": '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2s7 7.6 7 12.5a7 7 0 0 1-14 0C5 9.6 12 2 12 2z"/></svg>',
     "nose": '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3c2 4 5 5.5 5 9.5a5 5 0 0 1-10 0C7 8.5 10 7 12 3zm-6 15c1.5 2 3.7 3 6 3s4.5-1 6-3l-1.6-1.2A5.9 5.9 0 0 1 12 19a5.9 5.9 0 0 1-4.4-2.2z"/></svg>',
     "cash": '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 6h20v12H2zm10 2.5A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM4 8a2 2 0 0 1-2 2V8zm18 0v2a2 2 0 0 1-2-2zM2 14a2 2 0 0 1 2 2H2zm20 0v2h-2a2 2 0 0 1 2-2z"/></svg>',
+    "instagram": '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-2.1-.1-3.3c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>',
+    "tiktok": '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.7 5.8a4.8 4.8 0 0 1-1.4-3.8h-3.1v13c0 1.5-1.2 2.7-2.7 2.7A2.7 2.7 0 0 1 7.5 12c.3 0 .6 0 .9.1V9c-.3 0-.6-.1-.9-.1A5.6 5.6 0 1 0 13.1 14.6V8.1a7.7 7.7 0 0 0 4.5 1.4V6.4a4.8 4.8 0 0 1-.9-.6z"/></svg>',
+    "google": '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.7h5.4c-.2 1.2-.9 2.3-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path fill="currentColor" d="M12 22c2.7 0 5-.9 6.6-2.5l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="currentColor" d="M6.4 13.9c-.2-.6-.3-1.2-.3-1.9s.1-1.3.3-1.9V7.5H3.1a10 10 0 0 0 0 9l3.3-2.6z"/><path fill="currentColor" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.8 9.4 6 12 6z"/></svg>',
 }
 
 
@@ -403,6 +411,11 @@ def s_map(d) -> str:
     )
 
 
+def s_socials(d) -> str:
+    head = section_head(d)
+    return f'<section class="sec"><div class="wrap wrap-nar center-sec">{head}{socials_html("lg")}</div></section>'
+
+
 def section_head(d) -> str:
     out = ""
     if d.get("title"):
@@ -426,6 +439,7 @@ RENDER = {
     "gallery_ph": s_gallery_ph,
     "form": s_form,
     "map": s_map,
+    "socials": s_socials,
 }
 
 # ------------------------------------------------------------------ layout ---
@@ -463,10 +477,42 @@ def header(active: str) -> str:
 </div></header>"""
 
 
+def socials_html(variant: str = "ft") -> str:
+    items = [
+        ("instagram", BIZ["instagram"], "Instagram"),
+        ("tiktok", BIZ["tiktok"], "TikTok"),
+        ("google", BIZ["gbp_url"], "Google"),
+    ]
+    cls = "socials socials-lg" if variant == "lg" else "socials"
+    links = "".join(
+        f'<a class="social" href="{href}" target="_blank" rel="noopener" aria-label="{label}">'
+        f"{icon(ic)}<span>{label}</span></a>"
+        for ic, href, label in items
+    )
+    return f'<div class="{cls}">{links}</div>'
+
+
+def footer_map() -> str:
+    """Google Maps embed band that sits at the bottom of every page (lazy-loaded,
+    so it only fetches when a visitor scrolls to it). Uses a business-name search
+    so it mirrors whatever the GBP shows (exact address or service area)."""
+    q = H.escape(f"{BIZ['name']} {BIZ['city']} {BIZ['region']}", quote=True).replace(" ", "+")
+    return (
+        '<section class="ft-map-band" aria-label="Where we are"><div class="wrap">'
+        '<div class="ft-map-head">'
+        f'<h2>Based in {BIZ["city"]} — mobile across the I-10 corridor</h2>'
+        f'<a class="btn btn-outline" href="{BIZ["gbp_url"]}" target="_blank" rel="noopener">'
+        f'{icon("pin")} Open in Google Maps</a></div>'
+        f'<div class="map-wrap"><iframe title="{BIZ["name"]} on Google Maps" loading="lazy" '
+        f'src="https://www.google.com/maps?q={q}&output=embed"></iframe></div>'
+        "</div></section>"
+    )
+
+
 def footer() -> str:
     svc = "".join(f'<li><a href="{href}">{n}</a></li>' for n, href in SERVICES_NAV)
     cities = "".join(f'<li><a href="{href}">Car detailing {n}, AZ</a></li>' for n, href in CITIES_SERVED)
-    return f"""<footer class="ft"><div class="wrap ft-grid">
+    return f"""{footer_map()}<footer class="ft"><div class="wrap ft-grid">
   <div>
     <a class="brand brand-ft" href="/">{LOGO}<span class="brand-t">Supreme Clean<em>Detailing</em></span></a>
     <p>Owner-operated mobile car detailing by {BIZ['owner']}. Based in {BIZ['city']}, {BIZ['region']} {BIZ['zip']} —
@@ -480,9 +526,10 @@ def footer() -> str:
     <li><a href="sms:{BIZ['phone_e164']}">{icon('chat')} Text us a photo for a quote</a></li>
     <li><a href="mailto:{BIZ['email']}">{BIZ['email']}</a></li>
     <li>{icon('clock')} {BIZ['hours_human']}</li>
-    <li><a href="{BIZ['gbp_url']}">{icon('pin')} Find us on Google Maps</a></li>
-    <li><a href="{BIZ['review_url']}">{icon('star')} Leave us a review</a></li>
-  </ul></div>
+    <li><a href="{BIZ['gbp_url']}" target="_blank" rel="noopener">{icon('pin')} Find us on Google Maps</a></li>
+    <li><a href="{BIZ['review_url']}" target="_blank" rel="noopener">{icon('star')} Leave us a review</a></li>
+  </ul>
+  <div class="ft-follow"><span class="ft-follow-l">Follow the work</span>{socials_html()}</div></div>
 </div>
 <div class="wrap ft-legal">
 <span>© {CURRENT_YEAR} {BIZ['name']} · {BIZ['city']}, {BIZ['region']}</span>
@@ -607,7 +654,7 @@ def base_schema(p) -> list[dict]:
                 "reviewBody": "Arrived on time, kept me updated on what they were doing to my car. They left my car smelling fresh and deep detailed — they were even able to remove a smell I had in my car.",
             },
         ],
-        "sameAs": [BIZ["gbp_url"]],
+        "sameAs": [BIZ["gbp_url"], BIZ["instagram"], BIZ["tiktok"]],
     }
     if PRICES_LIVE:
         biz["priceRange"] = "$45 - $225"

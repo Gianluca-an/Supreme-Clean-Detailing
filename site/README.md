@@ -116,8 +116,11 @@ filename. Name files descriptively for SEO, e.g.
 5. **Fallback form** — FormSubmit needs one-time activation: the first
    submission emails an activation link to supremecleandetailing01@gmail.com.
    (Optional: swap for a GHL form/webhook so fallback leads also land in CRM.)
-6. **Review link** — `BIZ["review_url"]` currently points to the Maps search.
-   Replace with the direct "Ask for reviews" short link from the GBP dashboard.
+6. **Review link** — `BIZ["review_url"]` now points to the real GBP share link
+   (`share.google/…`); reviews are one tap in. Optional upgrade: the direct
+   "write a review" deep link from the GBP dashboard opens the star dialog
+   straight away. Socials (`BIZ["instagram"]`, `BIZ["tiktok"]`) render in the
+   footer "Follow the work" row, on the contact page, and in schema `sameAs`.
 7. **Domain email** — replace the Gmail address with hello@supremecleandetailingpro.com
    once mail is set up on the domain, then update `BIZ["email"]`.
 8. **Address visibility** — full street address (matching the GBP) is in the
