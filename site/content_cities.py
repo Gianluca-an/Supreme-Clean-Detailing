@@ -4,6 +4,7 @@ pricing anchor, a real review, localized FAQ (FAQPage schema), CTA."""
 
 from build import BIZ, CITIES_SERVED
 from content_core import TRUSTBAR, CTA, PRICING_TIERS
+from content_gallery import BA_HOME, ba_section
 
 TEL = BIZ["phone_e164"]
 PHONE = BIZ["phone_display"]
@@ -31,6 +32,12 @@ def city(slug, name, title, desc, h1, sub, local_html, faq_items, review):
             TRUSTBAR,
             ("prose", {"title": f"Mobile detailing in {name}, done at your driveway", "html": local_html}),
             ("pricing", PRICING_TIERS),
+            ba_section(
+                "Recent transformations",
+                "Real before-and-afters from customer vehicles around the corridor.",
+                BA_HOME,
+                more_link="/gallery/",
+            ),
             (
                 "reviews",
                 {

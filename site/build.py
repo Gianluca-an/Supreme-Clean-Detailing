@@ -356,6 +356,42 @@ def s_gallery_ph(d) -> str:
     return f'<section class="sec"><div class="wrap">{head}<div class="grid g3">{tiles}</div></div></section>'
 
 
+def s_beforeafter(d) -> str:
+    """Real before/after pairs, two images per card with corner labels."""
+    cards = []
+    for it in d["items"]:
+        cards.append(
+            '<figure class="ba">'
+            '<div class="ba-imgs">'
+            '<div class="ba-half"><span class="ba-tag">Before</span>'
+            f'<img loading="lazy" decoding="async" src="{it["before"]}" alt="{esc(it["alt"])} — before"></div>'
+            '<div class="ba-half"><span class="ba-tag ba-tag-a">After</span>'
+            f'<img loading="lazy" decoding="async" src="{it["after"]}" alt="{esc(it["alt"])} — after"></div>'
+            "</div>"
+            f'<figcaption class="ba-cap"><b>{it["title"]}</b><span>{it["service"]}</span></figcaption>'
+            "</figure>"
+        )
+    more = (
+        f'<p class="center"><a class="btn btn-ghost btn-lg" href="{d["more_link"]}">See the full gallery →</a></p>'
+        if d.get("more_link") else ""
+    )
+    head = section_head(d)
+    return f'<section class="sec" id="before-after"><div class="wrap">{head}<div class="ba-grid">{"".join(cards)}</div>{more}</div></section>'
+
+
+def s_showcase(d) -> str:
+    """Standalone glamour shots in a portrait-tile grid with caption overlays."""
+    cards = []
+    for it in d["items"]:
+        sub = f'<span>{it["sub"]}</span>' if it.get("sub") else ""
+        cards.append(
+            f'<figure class="show"><img loading="lazy" decoding="async" src="{it["img"]}" alt="{esc(it["alt"])}">'
+            f'<figcaption class="show-cap"><b>{it["title"]}</b>{sub}</figcaption></figure>'
+        )
+    head = section_head(d)
+    return f'<section class="sec sec-alt"><div class="wrap">{head}<div class="show-grid">{"".join(cards)}</div></div></section>'
+
+
 def s_form(d) -> str:
     # When a GoHighLevel calendar is configured, embed it as the primary booking
     # path (books straight into the CRM pipeline); the request form stays below
@@ -437,6 +473,8 @@ RENDER = {
     "cta": s_cta,
     "areas": s_areas,
     "gallery_ph": s_gallery_ph,
+    "beforeafter": s_beforeafter,
+    "showcase": s_showcase,
     "form": s_form,
     "map": s_map,
     "socials": s_socials,
@@ -798,7 +836,8 @@ def build(pages) -> None:
         shutil.copy(png, OUT / "assets" / "og-card.png")
     gal = ROOT / "assets" / "gallery"
     if gal.exists() and any(gal.iterdir()):
-        shutil.copytree(gal, OUT / "assets" / "gallery")
+        # ship only the optimized web images; keep full-res originals (_staging) out
+        shutil.copytree(gal, OUT / "assets" / "gallery", ignore=shutil.ignore_patterns("_staging"))
 
     # Apache/LiteSpeed config for Namecheap cPanel hosting (ignored by Cloudflare)
     (OUT / ".htaccess").write_text(HTACCESS, encoding="utf-8")

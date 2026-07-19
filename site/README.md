@@ -97,13 +97,28 @@ in `site/content_core.py`:
 To change a price: edit the tier in `content_core.py`, rebuild, re-upload. To
 pull all prices again, set `PRICES_LIVE = False` (offers/priceRange drop out).
 
-## Photos — drop-in pipeline
+## Photos — before/after gallery + showcase
 
-Put JPG/PNG/WebP files in **`site/assets/gallery/`** and rebuild — the
-gallery page renders them automatically with alt text taken from the
-filename. Name files descriptively for SEO, e.g.
-`interior-deep-clean-f150-casa-grande-before-after.jpg`.
-(Own work only — the teardown shows stock photos are a bottom-cohort marker.)
+Photos live in two places:
+- **`site/assets/gallery/_staging/`** — full-res originals (committed, but
+  **not shipped**; `build()` excludes `_staging` from the copy).
+- **`site/assets/gallery/*.jpg`** — optimized web copies that ship (long edge
+  ≤ 1280 px, JPEG q82 progressive). Every image renders `loading="lazy"`, so
+  the homepage stays light (57 KB HTML) even with photos threaded throughout.
+
+Structure lives in **`site/content_gallery.py`**:
+- `BEFORE_AFTER` — before/after pairs; each needs `<slug>-before.jpg` and
+  `<slug>-after.jpg`. Subsets (`BA_INTERIOR`, `BA_EXTERIOR`, `BA_HOME`) feed
+  individual pages.
+- `SHOWCASE` — standalone glamour shots (`showcase-<name>.jpg`).
+These render via `ba_section()` / `showcase_section()` on the gallery page,
+homepage, service pages, every city page and the reviews page.
+
+**To add photos:** drop originals in `_staging/`, make optimized copies in
+`gallery/` (resize long edge ~1280, JPEG q82 — run `PIL.ImageOps.exif_transpose`
+first so phone rotation is baked in), then add a `_ba(...)` or `_sc(...)` entry
+to `content_gallery.py` and rebuild. Own work only — the teardown shows stock
+photos are a bottom-cohort marker.
 
 ## Owner checklist (remaining)
 

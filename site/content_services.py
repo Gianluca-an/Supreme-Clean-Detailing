@@ -7,6 +7,9 @@ from content_core import (
     TRUSTBAR, CTA, ADDONS,
     TIER_EXTERIOR, TIER_INTERIOR, TIER_BASIC, TIER_SUPREME,
 )
+from content_gallery import (
+    BA_INTERIOR, BA_EXTERIOR, BA_HOME, SHOWCASE, ba_section, showcase_section,
+)
 
 TEL = BIZ["phone_e164"]
 PHONE = BIZ["phone_display"]
@@ -74,6 +77,12 @@ things like <em>“literally came back brand new, smelled new and looked even ne
                 [TIER_BASIC, TIER_SUPREME],
                 note="Heavy pet hair, sand or long-neglected interiors may add time — you'll know the exact price from your photos before we start. Add-ons below can be bolted on same-visit.",
             ),
+            ba_section(
+                "Full details, before &amp; after",
+                "Inside, outside and under the hood — the full reset, on real customer vehicles.",
+                BA_HOME,
+                more_link="/gallery/",
+            ),
             ADDONS,
             (
                 "reviews",
@@ -133,6 +142,12 @@ clean since I bought it,”</em> as one review puts it.</p>
                 "By vehicle size — exact quote from your photos before booking.",
                 [TIER_INTERIOR],
             ),
+            ba_section(
+                "Interior transformations",
+                "Carpets, seats, dashboards and door jambs — same vehicle, same visit.",
+                BA_INTERIOR,
+                more_link="/gallery/",
+            ),
             (
                 "reviews",
                 {
@@ -189,6 +204,17 @@ plan is for (regulars save on every visit; ask when you book).</p>
                 "Flat by size, at your location — no travel fees in our service area.",
                 [TIER_EXTERIOR],
                 note="Add the wax/sealant upgrade (+$20) for months of extra protection, clay bar &amp; seal ($65) for a glass-smooth finish, or headlight restoration ($55/headlight) while we're there.",
+            ),
+            ba_section(
+                "Exterior before &amp; after",
+                "Hand-washed, decontaminated and sealed — the desert dust lifted off, not ground in.",
+                BA_EXTERIOR,
+                more_link="/gallery/",
+            ),
+            showcase_section(
+                "More recent work",
+                "A few finished exteriors from around the corridor.",
+                SHOWCASE,
             ),
             (
                 "reviews",

@@ -9,6 +9,9 @@ all prices live in PRICING_TIERS and ADDONS only.
 """
 
 from build import BIZ, CITIES_SERVED
+from content_gallery import (
+    BEFORE_AFTER, SHOWCASE, SHOWCASE_HOME, BA_HOME, ba_section, showcase_section,
+)
 
 TEL = BIZ["phone_e164"]
 PHONE = BIZ["phone_display"]
@@ -246,6 +249,11 @@ CORE_PAGES = [
         },
         "sections": [
             TRUSTBAR,
+            showcase_section(
+                "Recently detailed",
+                "A few of the cars and trucks we've brought back to showroom-shine across the corridor.",
+                SHOWCASE_HOME,
+            ),
             (
                 "cards",
                 {
@@ -264,6 +272,12 @@ CORE_PAGES = [
             STEPS,
             ("pricing", PRICING_TIERS),
             ADDONS,
+            ba_section(
+                "The difference is the detail",
+                "Real before-and-afters from real jobs — same vehicle, same day. No stock photos, ever.",
+                BA_HOME,
+                more_link="/gallery/",
+            ),
             REVIEWS_HOME,
             (
                 "prose",
@@ -470,6 +484,11 @@ seats, and smells other shops couldn't fix.</p>
 """,
                 },
             ),
+            showcase_section(
+                "The cars behind the reviews",
+                "Recent work from around Casa Grande and the I-10 corridor.",
+                SHOWCASE_HOME,
+            ),
             CTA,
         ],
     },
@@ -481,10 +500,19 @@ seats, and smells other shops couldn't fix.</p>
         "title": "Before & After Gallery | Supreme Clean Detailing — Casa Grande, AZ",
         "desc": "Before-and-after photos from real Supreme Clean Detailing jobs across Casa Grande and Maricopa, AZ — interiors, exteriors, trucks and Corvettes alike.",
         "h1": "The work speaks for itself",
-        "hero_sub": "Real vehicles, real transformations. (Photos coming online now — in the meantime, our reviews describe the results better than we ever could.)",
+        "hero_sub": "Real vehicles, real Casa Grande driveways — every photo below is our own work. No stock images, ever.",
         "crumbs": [("Gallery", None)],
         "sections": [
-            ("gallery_ph", {"title": "Recent work", "sub": "Check back — new before/afters are added after every few jobs."}),
+            ba_section(
+                "Before &amp; after",
+                "Same vehicle, same visit. Interiors, exteriors and engine bays — dragged back to like-new.",
+                BEFORE_AFTER,
+            ),
+            showcase_section(
+                "Recent work",
+                "A few of the cars and trucks we've had the pleasure of detailing around the corridor.",
+                SHOWCASE,
+            ),
             REVIEWS_HOME,
             CTA,
         ],
