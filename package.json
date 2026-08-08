@@ -1,0 +1,13 @@
+{
+  "name": "supreme-clean-detailing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Supreme Clean Detailing — static site served by Cloudflare Workers static assets. Source in site/, generated output in public/.",
+  "scripts": {
+    "build": "python3 site/build.py",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

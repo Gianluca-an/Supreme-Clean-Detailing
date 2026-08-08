@@ -1,0 +1,14 @@
+{
+  // Cloudflare Workers "static assets" config. Deploying with this updates the
+  // EXISTING Worker below (same name), so its custom domains
+  // (supremecleandetailingpro.com + www) stay attached — nothing to re-point.
+  // No `routes`/`main` here on purpose: this is an assets-only site, and
+  // omitting routes means a deploy never touches the domain bindings.
+  "name": "lingering-mode-be82",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

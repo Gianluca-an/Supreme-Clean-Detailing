@@ -1,6 +1,10 @@
 __pycache__/
 *.pyc
 
+# Node / Cloudflare Wrangler (deploy tooling; installed in CI, not committed)
+node_modules/
+.wrangler/
+
 # Secrets — never commit
 .env
 .env.*
