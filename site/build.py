@@ -35,6 +35,18 @@ GHL_CALENDAR_URL = (
     "&showCalendarDescription=true&showCalendarDetails=true&default=false"
 )
 
+# Google Analytics 4 (gtag.js) — injected near the top of <head> on every page
+# via the shared render_page() template. This is the site's one sitewide
+# external script; it is async, so it does not block render.
+GA_SNIPPET = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LY3BJ5ZR2N"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LY3BJ5ZR2N');
+</script>"""
+
 # Real, owner-confirmed pricing is live (Anthony's July 2025 list, raised 5% and
 # rounded to clean $5s). Re-enables Service/AggregateOffer + priceRange schema.
 PRICES_LIVE = True
@@ -789,6 +801,7 @@ def render_page(p) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{GA_SNIPPET}
 <title>{esc(p['title'])}</title>
 <meta name="description" content="{esc(p['desc'])}">
 <link rel="canonical" href="{url}">
