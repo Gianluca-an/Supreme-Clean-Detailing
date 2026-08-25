@@ -47,6 +47,26 @@ gtag('js', new Date());
 gtag('config', 'G-LY3BJ5ZR2N');
 </script>"""
 
+# Meta (Facebook) Pixel — injected in <head> on every page via render_page().
+# Async loader (fbevents.js), so it does not block render.
+META_PIXEL = """<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '919522911215586');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=919522911215586&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->"""
+
 # Real, owner-confirmed pricing is live (Anthony's July 2025 list, raised 5% and
 # rounded to clean $5s). Re-enables Service/AggregateOffer + priceRange schema.
 PRICES_LIVE = True
@@ -802,6 +822,7 @@ def render_page(p) -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {GA_SNIPPET}
+{META_PIXEL}
 <title>{esc(p['title'])}</title>
 <meta name="description" content="{esc(p['desc'])}">
 <link rel="canonical" href="{url}">

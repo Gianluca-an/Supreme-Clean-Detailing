@@ -9,7 +9,7 @@ Built from the competitive teardown in `research/az-detailing-market-teardown.md
 | Metric | This site | Market top-10 | Market bottom-10 |
 |---|---|---|---|
 | Homepage weight (HTML) | **41 KB** | 147 KB – 1.17 MB | up to 3 MB |
-| External scripts | **1** (GA4 analytics, async) | 9 – 72 | 8 – 47 |
+| External scripts | **2** (GA4 + Meta Pixel, both async) | 9 – 72 | 8 – 47 |
 | CSS files | **1** (16 KB) | 4 – 30 | — |
 | JSON-LD (parse errors) | LocalBusiness+AutoWash, AggregateRating, Review, Service+AggregateOffer, FAQPage, BreadcrumbList, WebSite (**0 errors**) | partial | none |
 | Pages at launch | **29** (7 services, 8 city pages, pricing, blog…) | ~10 – 140 | 1 – 4 |
