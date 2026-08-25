@@ -219,6 +219,85 @@ AREAS = (
 
 # ------------------------------------------------------------------- pages --
 
+# Privacy policy — required now that Google Analytics is live (GA terms), and
+# because the contact form + GHL booking collect personal info. Standard policy
+# for a small local service business; owner can have counsel review if desired.
+PRIVACY_HTML = f"""
+<p><strong>Effective date:</strong> August 25, 2026</p>
+<p>{BIZ['name']} (“we,” “us,” “our”) is an owner-operated mobile car-detailing business
+based in {BIZ['city']}, {BIZ['region']}. This policy explains what information we collect when you
+contact us, book a detail, or use supremecleandetailingpro.com, and how we use and protect it.</p>
+
+<h3>Information we collect</h3>
+<ul>
+<li><strong>Information you give us.</strong> When you use our booking or contact form, or text,
+email or call us, we collect your name, phone number, email address, city, vehicle details, and
+anything you choose to tell us about the job.</li>
+<li><strong>Booking information.</strong> Appointments booked through our online calendar are
+processed on our behalf by our scheduling provider, GoHighLevel (LeadConnector).</li>
+<li><strong>Information collected automatically.</strong> Like most websites, we use
+<strong>Google Analytics</strong>, which sets cookies and collects standard usage data — such as
+your approximate location, device and browser type, the pages you view, and how you found us — to
+help us understand and improve the site. Our host also keeps standard server logs.</li>
+</ul>
+
+<h3>How we use your information</h3>
+<ul>
+<li>To reply to your inquiry and give you a quote;</li>
+<li>To schedule, confirm and carry out your detailing appointment;</li>
+<li>To follow up about your service and, if you'd like, future appointments;</li>
+<li>To understand website traffic and improve our site and services.</li>
+</ul>
+<p><strong>We do not sell or rent your personal information to anyone.</strong></p>
+
+<h3>Text messaging</h3>
+<p>If you text us or give us your number, you agree that we may text you back about your quote and
+appointment. Message and data rates may apply and message frequency varies. Reply
+<strong>STOP</strong> at any time to opt out or <strong>HELP</strong> for help. We don't share your
+number with third parties for their own marketing.</p>
+
+<h3>Who we share information with</h3>
+<p>We share information only with the service providers that help us run the business, and only as
+needed to do so:</p>
+<ul>
+<li><strong>Google Analytics</strong> — website analytics;</li>
+<li><strong>GoHighLevel / LeadConnector</strong> — online booking and customer management;</li>
+<li><strong>FormSubmit</strong> — delivers our contact-form submissions to our email;</li>
+<li><strong>Cloudflare</strong> — website hosting and security.</li>
+</ul>
+<p>We may also disclose information if required by law.</p>
+
+<h3>Cookies &amp; your choices</h3>
+<p>You can set your browser to refuse cookies or alert you when they're used. To opt out of Google
+Analytics specifically, install Google's
+<a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Analytics
+Opt-out Browser Add-on</a>. Blocking cookies won't stop you from booking a detail — you can always
+just call or text us.</p>
+
+<h3>Your rights</h3>
+<p>You may ask to see, correct or delete the personal information we hold about you — just email
+<a href="mailto:{BIZ['email']}">{BIZ['email']}</a> and we'll take care of it. California residents:
+we do not sell personal information and we honor your rights under the CCPA.</p>
+
+<h3>Data retention &amp; security</h3>
+<p>We keep your information only as long as needed to serve you and run the business, and we take
+reasonable steps to protect it. No method of transmitting information over the internet is 100%
+secure, but we treat your details with care.</p>
+
+<h3>Children</h3>
+<p>Our services and website are intended for adults; we don't knowingly collect information from
+children under 13.</p>
+
+<h3>Changes to this policy</h3>
+<p>We may update this policy from time to time. The effective date above shows when it last changed.</p>
+
+<h3>Contact us</h3>
+<p>Questions about your privacy? Contact {BIZ['owner']} at
+<a href="mailto:{BIZ['email']}">{BIZ['email']}</a> or
+<a href="tel:{BIZ['phone_e164']}">{BIZ['phone_display']}</a> — {BIZ['name']}, {BIZ['city']},
+{BIZ['region']} {BIZ['zip']}.</p>
+"""
+
 CORE_PAGES = [
     # ------------------------------------------------------------------ home
     {
@@ -683,6 +762,20 @@ outside the map — Stanfield, Toltec, Picacho, Sacaton — text us anyway. If i
             ),
             REVIEWS_HOME,
             CTA,
+        ],
+    },
+    # ---------------------------------------------------------------- privacy
+    {
+        "slug": "privacy",
+        "nav_active": "",
+        "priority": "0.3",
+        "title": "Privacy Policy | Supreme Clean Detailing — Casa Grande, AZ",
+        "desc": "How Supreme Clean Detailing collects, uses and protects your information when you contact us, book a detail, or browse this website.",
+        "h1": "Privacy Policy",
+        "hero_sub": "How we handle your information when you contact us, book a detail, or visit this site.",
+        "crumbs": [("Privacy Policy", None)],
+        "sections": [
+            ("prose", {"html": PRIVACY_HTML}),
         ],
     },
     # -------------------------------------------------------------------- 404

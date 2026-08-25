@@ -584,7 +584,7 @@ def footer() -> str:
 <div class="wrap ft-legal">
 <span>© {CURRENT_YEAR} {BIZ['name']} · {BIZ['city']}, {BIZ['region']}</span>
 <span>On time · Fair prices · Satisfaction guaranteed</span>
-<span>{BIZ['hours_human']} · <a href="/sitemap.xml">Sitemap</a></span></div>
+<span><a href="/privacy/">Privacy Policy</a> · <a href="/sitemap.xml">Sitemap</a></span></div>
 </footer>
 <div class="mobile-bar" aria-label="Quick actions">
   <a href="tel:{BIZ['phone_e164']}">{icon('phone')} Call</a>
