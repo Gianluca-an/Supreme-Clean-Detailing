@@ -34,8 +34,8 @@ TRUSTBAR = (
 # ---- pricing (LIVE) --------------------------------------------------------
 # Owner-confirmed rates (Anthony's July 2025 list, raised 5%, rounded to clean
 # $5s). Tiers are named module-level so the service pages can reuse the exact
-# same numbers. The Supreme Full Detail carries a bundle discount — 15% off
-# cars/trucks/SUVs, 20% off XL — rendered as "was → now" per size (3-tuple rows).
+# same numbers. (Prices show at full rate — the earlier Supreme bundle discount
+# was removed per owner request; price rows are plain (size, price) tuples.)
 TIER_EXTERIOR = {
     "name": "Exterior Wash &amp; Shine",
     "tagline": "A proper hand wash — desert dust lifted off, never ground in by a tunnel brush.",
@@ -101,13 +101,12 @@ TIER_SUPREME = {
     "tagline": "The complete reset — a full interior deep clean plus exterior wash and hand-applied wax. Our most-booked service.",
     "popular": True,
     "prices": [
-        ("Car / coupe", "$145", "$170"),
-        ("Truck", "$155", "$180"),
-        ("SUV", "$160", "$190"),
-        ("XL truck", "$170", "$210"),
-        ("XL SUV", "$180", "$225"),
+        ("Car / coupe", "$170"),
+        ("Truck", "$180"),
+        ("SUV", "$190"),
+        ("XL truck", "$210"),
+        ("XL SUV", "$225"),
     ],
-    "save": "Full-detail savings — 15% off cars, trucks &amp; SUVs · 20% off XL",
     "time": "About 3–5 hours",
     "includes": [
         "Everything in the Interior Deep Clean",
@@ -316,7 +315,7 @@ CORE_PAGES = [
         ],
         "hero_card": {
             "label": "Supreme · Full Detail",
-            "price": "from $145",
+            "price": "from $170",
             "rows": [
                 ("Interior deep clean, steam &amp; shampoo", "2–3 h"),
                 ("Two-bucket hand wash &amp; wheels", "included"),

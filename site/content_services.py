@@ -73,7 +73,7 @@ things like <em>“literally came back brand new, smelled new and looked even ne
             ),
             price_block(
                 "Full Detail pricing — Basic vs. Supreme",
-                "Two levels, priced by vehicle size. The Supreme is our most-booked — it includes the full interior deep clean and hand-applied wax at a bundled discount (15% off cars, trucks &amp; SUVs, 20% off XL).",
+                "Two levels, priced by vehicle size. The Supreme is our most-booked — it includes the full interior deep clean and hand-applied wax.",
                 [TIER_BASIC, TIER_SUPREME],
                 note="Heavy pet hair, sand or long-neglected interiors may add time — you'll know the exact price from your photos before we start. Add-ons below can be bolted on same-visit.",
             ),
