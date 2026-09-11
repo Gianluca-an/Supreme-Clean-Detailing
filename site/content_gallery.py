@@ -24,7 +24,7 @@ BA_EXPLORER_FRONT = _ba("explorer-interior-front", "Ford Explorer", "Full interi
 BA_EXPLORER_REAR = _ba("explorer-interior-rear", "Ford Explorer", "Rear floor &amp; carpet",
                        "Ford Explorer rear floor carpet shampoo and deep clean")
 BA_F150 = _ba("f150-interior", "Ford F-150", "Interior deep clean",
-              "Ford F-150 interior deep clean — dashboard, console and carpets")
+              "Ford F-150 interior deep clean of the dashboard, console and carpets")
 BA_SEATS = _ba("suv-rear-seats", "Cloth rear seats", "Seat deep clean",
                "SUV cloth rear-seat deep clean and vacuum")
 BA_F350 = _ba("f350-dually-exterior", "Ford F-350 Dually", "Exterior detail",

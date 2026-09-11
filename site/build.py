@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Supreme Clean Detailing — zero-dependency static site generator.
+"""Supreme Clean Detailing, a zero-dependency static site generator.
 
 Usage:  python3 site/build.py          (writes the site into ./public)
 
@@ -24,7 +24,7 @@ OUT = ROOT.parent / "public"
 # ---------------------------------------------------------------- business ---
 SITE_URL = "https://supremecleandetailingpro.com"
 
-# GoHighLevel booking calendar — renders on /book/ with the request form as
+# GoHighLevel booking calendar, renders on /book/ with the request form as
 # fallback. primaryColor set to brand aqua 5FB8C4 (the link's original
 # 9F0E13 red clashes with the site palette; swap the param back if the red
 # was intentional).
@@ -35,7 +35,7 @@ GHL_CALENDAR_URL = (
     "&showCalendarDescription=true&showCalendarDetails=true&default=false"
 )
 
-# Google Analytics 4 (gtag.js) — injected near the top of <head> on every page
+# Google Analytics 4 (gtag.js), injected near the top of <head> on every page
 # via the shared render_page() template. This is the site's one sitewide
 # external script; it is async, so it does not block render.
 GA_SNIPPET = """<!-- Google tag (gtag.js) -->
@@ -47,7 +47,7 @@ gtag('js', new Date());
 gtag('config', 'G-LY3BJ5ZR2N');
 </script>"""
 
-# Meta (Facebook) Pixel — injected in <head> on every page via render_page().
+# Meta (Facebook) Pixel, injected in <head> on every page via render_page().
 # Async loader (fbevents.js), so it does not block render.
 META_PIXEL = """<!-- Meta Pixel Code -->
 <script>
@@ -82,9 +82,9 @@ BIZ = {
     "zip": "85122",
     "rating": "5.0",
     "review_count": "20",
-    "hours_human": "Mon–Sat 8:00 AM – 6:00 PM",
+    "hours_human": "Monday to Saturday, 8:00 AM to 6:00 PM",
     "hours_schema": ["Mo-Sa 08:00-18:00"],
-    # Owner's real Google Business Profile (share link) — powers "Find us on
+    # Owner's real Google Business Profile (share link), powers "Find us on
     # Google", the rating link, and schema sameAs.
     "gbp_url": "https://share.google/82HKSp4gcInryGLCi",
     # TODO(owner): swap for the direct "write a review" deep link from the GBP
@@ -192,7 +192,7 @@ def bubbles_html() -> str:
 
 
 def wash_html() -> str:
-    """Homepage-only 'clean beginning' intro wash — falling droplets + a squeegee
+    """Homepage-only 'clean beginning' intro wash, with falling droplets and a squeegee
     blade wipe over the brand mark. Content renders behind it (SEO intact); it
     auto-dismisses (CSS fallback + JS), plays once per session, and is skippable."""
     import random
@@ -212,7 +212,7 @@ def wash_html() -> str:
         '<div class="wash-in">'
         '<p class="eyebrow">Supreme Clean Detailing · Casa Grande, AZ</p>'
         '<h1>A clean <em>beginning</em>.</h1>'
-        '<p>The water, the foam, and the patience of a perfect finish — brought to your driveway.</p>'
+        '<p>Professional mobile car detailing, brought right to your driveway.</p>'
         "</div>"
         '<button type="button" class="wash-skip" aria-label="Skip intro">Skip intro</button>'
         "</div>"
@@ -368,7 +368,7 @@ def s_areas(d) -> str:
 
 def s_gallery_ph(d) -> str:
     """Photo-drop pipeline: put JPG/PNG/WebP files in site/assets/gallery/ and
-    rebuild — they render automatically (alt text from the filename, e.g.
+    rebuild, and they render automatically (alt text from the filename, e.g.
     'interior-deep-clean-f150-before-after.jpg'). Until then: labelled slots."""
     gal = ROOT / "assets" / "gallery"
     photos = sorted(p for p in gal.glob("*") if p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}) if gal.exists() else []
@@ -381,7 +381,7 @@ def s_gallery_ph(d) -> str:
         )
     else:
         tiles = "".join(
-            '<div class="ph-tile"><span>Before / after photo slot — drop images into site/assets/gallery/ and rebuild</span></div>'
+            '<div class="ph-tile"><span>Before / after photo slot, drop images into site/assets/gallery/ and rebuild</span></div>'
             for _ in range(6)
         )
     head = section_head(d)
@@ -396,9 +396,9 @@ def s_beforeafter(d) -> str:
             '<figure class="ba">'
             '<div class="ba-imgs">'
             '<div class="ba-half"><span class="ba-tag">Before</span>'
-            f'<img loading="lazy" decoding="async" src="{it["before"]}" alt="{esc(it["alt"])} — before"></div>'
+            f'<img loading="lazy" decoding="async" src="{it["before"]}" alt="Before: {esc(it["alt"])}"></div>'
             '<div class="ba-half"><span class="ba-tag ba-tag-a">After</span>'
-            f'<img loading="lazy" decoding="async" src="{it["after"]}" alt="{esc(it["alt"])} — after"></div>'
+            f'<img loading="lazy" decoding="async" src="{it["after"]}" alt="After: {esc(it["alt"])}"></div>'
             "</div>"
             f'<figcaption class="ba-cap"><b>{it["title"]}</b><span>{it["service"]}</span></figcaption>'
             "</figure>"
@@ -433,7 +433,7 @@ def s_form(d) -> str:
     if GHL_CALENDAR_URL and d.get("calendar", True):
         ghl = (
             '<h2>Pick your time</h2>'
-            '<p class="sub">Live availability — booked straight onto '
+            '<p class="sub">See live availability and book straight onto '
             f"{BIZ['owner']}'s calendar. No prepayment.</p>"
             f'<div class="ghl-embed"><iframe src="{GHL_CALENDAR_URL}" '
             'title="Book your detailing appointment" loading="lazy" '
@@ -449,7 +449,7 @@ def s_form(d) -> str:
 <p class="sub">Fastest: <a href="sms:{BIZ['phone_e164']}">text {BIZ['phone_display']}</a> with your vehicle + a photo or two.
 Prefer a form? This goes straight to {BIZ['owner']} and he replies the same day.</p>
 <form class="book-form" action="{action}" method="POST">
-  <input type="hidden" name="_subject" value="New booking request — supremecleandetailing.com">
+  <input type="hidden" name="_subject" value="New booking request from supremecleandetailing.com">
   <input type="hidden" name="_captcha" value="false">
   <input type="text" name="_honey" style="display:none" tabindex="-1" aria-hidden="true">
   <div class="f-grid">
@@ -458,7 +458,7 @@ Prefer a form? This goes straight to {BIZ['owner']} and he replies the same day.
     <label>Email<input type="email" name="email" autocomplete="email"></label>
     <label>City<select name="city">{''.join(f'<option>{c}</option>' for c, _ in CITIES_SERVED)}<option>Other nearby</option></select></label>
     <label>Vehicle (year / make / model)<input required name="vehicle" placeholder="2021 Toyota Tacoma"></label>
-    <label>Service<select name="service"><option>Full Detail</option><option>Interior Deep Clean</option><option>Exterior Wash &amp; Shine</option><option>Odor Removal</option><option>Pet Hair Removal</option><option>Headlight Restoration</option><option>Fleet / multiple vehicles</option><option>Not sure — recommend for me</option></select></label>
+    <label>Service<select name="service"><option>Full Detail</option><option>Interior Deep Clean</option><option>Exterior Wash &amp; Shine</option><option>Odor Removal</option><option>Pet Hair Removal</option><option>Headlight Restoration</option><option>Fleet / multiple vehicles</option><option>Not sure, please recommend for me</option></select></label>
     <label>Preferred day<input type="date" name="preferred_date"></label>
     <label class="f-full">Anything we should know? (stains, pets, smells, parking)<textarea name="message" rows="4"></textarea></label>
   </div>
@@ -533,7 +533,7 @@ def nav_html(active: str) -> str:
 
 def header(active: str) -> str:
     # (Promo bar removed. To add a real seasonal offer later, drop a
-    #  <div class="promo"><p>…</p></div> here — the .promo styles still exist.)
+    #  <div class="promo"><p>…</p></div> here, the .promo styles still exist.)
     return f"""<a class="skip" href="#main">Skip to content</a>
 <header class="hd"><div class="wrap hd-in">
   <a class="brand" href="/">{LOGO}<span class="brand-t">Supreme Clean<em>Detailing</em></span></a>
@@ -570,7 +570,7 @@ def footer_map() -> str:
     return (
         '<section class="ft-map-band" aria-label="Where we are"><div class="wrap">'
         '<div class="ft-map-head">'
-        f'<h2>Based in {BIZ["city"]} — mobile across the I-10 corridor</h2>'
+        f'<h2>We are based in {BIZ["city"]} and detail across the I-10 corridor</h2>'
         f'<a class="btn btn-outline" href="{BIZ["gbp_url"]}" target="_blank" rel="noopener">'
         f'{icon("pin")} Open in Google Maps</a></div>'
         f'<div class="map-wrap"><iframe title="{BIZ["name"]} on Google Maps" loading="lazy" '
@@ -585,8 +585,8 @@ def footer() -> str:
     return f"""{footer_map()}<footer class="ft"><div class="wrap ft-grid">
   <div>
     <a class="brand brand-ft" href="/">{LOGO}<span class="brand-t">Supreme Clean<em>Detailing</em></span></a>
-    <p>Owner-operated mobile car detailing by {BIZ['owner']}. Based in {BIZ['city']}, {BIZ['region']} {BIZ['zip']} —
-    serving the I-10 corridor between Phoenix and Tucson. We come to you.</p>
+    <p>Owner-operated mobile car detailing by {BIZ['owner']}. Based in {BIZ['city']}, {BIZ['region']} {BIZ['zip']},
+    we serve the I-10 corridor between Phoenix and Tucson. We come to you.</p>
     <p class="ft-rating"><a href="{BIZ['gbp_url']}">{stars()} {BIZ['rating']} · {BIZ['review_count']} Google reviews</a></p>
   </div>
   <div><h3>Services</h3><ul>{svc}</ul></div>
@@ -682,7 +682,7 @@ def base_schema(p) -> list[dict]:
         "@type": ["AutoWash", "LocalBusiness"],
         "@id": SITE_URL + "/#business",
         "name": BIZ["name"],
-        "description": "Owner-operated mobile car detailing serving Casa Grande, Maricopa, Eloy, Coolidge, Florence, San Tan Valley and Queen Creek, AZ. Interior, exterior and full details — we come to you.",
+        "description": "Owner-operated mobile car detailing serving Casa Grande, Maricopa, Eloy, Coolidge, Florence, San Tan Valley and Queen Creek, AZ. We do interior, exterior and full details, and we come to you.",
         "url": SITE_URL + "/",
         "telephone": BIZ["phone_e164"],
         "email": BIZ["email"],
@@ -721,7 +721,7 @@ def base_schema(p) -> list[dict]:
                 "@type": "Review",
                 "author": {"@type": "Person", "name": "Kimberly García"},
                 "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
-                "reviewBody": "Arrived on time, kept me updated on what they were doing to my car. They left my car smelling fresh and deep detailed — they were even able to remove a smell I had in my car.",
+                "reviewBody": "Arrived on time, kept me updated on what they were doing to my car. They left my car smelling fresh and deep detailed, and they were even able to remove a smell I had in my car.",
             },
         ],
         "sameAs": [BIZ["gbp_url"], BIZ["instagram"], BIZ["tiktok"]],
@@ -904,7 +904,7 @@ def build(pages) -> None:
     print(f"Upload bundle -> {archive}")
 
 
-HTACCESS = f"""# Supreme Clean Detailing — Namecheap/cPanel (Apache/LiteSpeed)
+HTACCESS = f"""# Supreme Clean Detailing, Namecheap/cPanel (Apache/LiteSpeed)
 Options -Indexes
 ErrorDocument 404 /404.html
 
@@ -936,7 +936,7 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 """
 
-# Cloudflare Pages _headers — applied top-down, most-specific path wins.
+# Cloudflare Pages _headers, applied top-down, most-specific path wins.
 CF_HEADERS = """/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
