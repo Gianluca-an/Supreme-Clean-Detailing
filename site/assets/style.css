@@ -1,10 +1,10 @@
-/* Supreme Clean Detailing — "Atelier" design system.
+/* Supreme Clean Detailing, "Atelier" design system.
    Deep-water palette + display serif, adapted from the Aquæ reference sketch
    onto this project's token/component architecture. Pure CSS (0 JS):
    ambient bubbles, card gleam and entrance reveals are all CSS animations. */
 
 :root{
-  /* color tokens — deep water */
+  /* color tokens, deep water */
   --abyss:#061821;          /* page background */
   --deep:#0a2630;           /* raised panels */
   --teal:#11484f;           /* deep accent fields */
@@ -57,7 +57,7 @@ strong{font-weight:600;color:var(--foam)}
 /* micro-label: the uppercase letter-spaced eyebrow used across the design */
 .eyebrow,.p-tag-label{font-family:var(--sans)}
 
-/* focus — keyboard-first, always visible */
+/* focus, keyboard-first, always visible */
 :where(a,button,input,select,textarea,summary):focus-visible{
   outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;
 }
@@ -370,7 +370,7 @@ summary{cursor:pointer;font-weight:500;font-size:15px;padding:var(--s4) var(--s5
   display:flex;justify-content:space-between;gap:var(--s4);color:var(--foam)}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-family:var(--serif);font-size:24px;color:var(--accent);line-height:1}
-details[open] summary::after{content:"–"}
+details[open] summary::after{content:"−"}
 details[open]{border-color:rgba(159,224,232,.45)}
 .faq-a{padding:0 var(--s5) var(--s4);color:var(--mist-72);font-size:var(--t-sm);line-height:1.7}
 .faq-a a{color:var(--accent)}
