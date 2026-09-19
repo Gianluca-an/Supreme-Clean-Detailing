@@ -41,7 +41,7 @@ SERVICE_PAGES = [
         "Full Detail",
         "Mobile Full Car Detail in Casa Grande, AZ, We Come to You | Supreme Clean Detailing",
         "Complete interior + exterior detail at your driveway in Casa Grande, Maricopa & nearby. Quoted upfront by vehicle size, 5.0★ rated, no prepayment. ☎ (520) 840-2452",
-        "The Full Detail: inside and out, back to day one",
+        "The Full Detail: inside and out in one visit",
         "We offer two levels. The Basic Full Detail is for regular upkeep, and our most-booked Supreme Full Detail adds a complete interior deep clean and hand-applied wax. Both are done in one visit at your home or work.",
         115,
         225,
@@ -51,7 +51,7 @@ SERVICE_PAGES = [
                 {
                     "title": "What the Supreme Full Detail includes",
                     "html": """
-<p>This is the full reset. Inside: complete vacuum (including trunk and seat rails), steam cleaning of
+<p>Inside: a complete vacuum (including trunk and seat rails), steam cleaning of
 hard surfaces, carpet and mat shampoo, seats deep-cleaned whether cloth or leather, door jambs, vents,
 console and cupholders detailed, streak-free interior glass and a clean, fresh finish, never a heavy
 cover-up perfume.</p>
@@ -79,7 +79,7 @@ things like <em>“literally came back brand new, smelled new and looked even ne
             ),
             ba_section(
                 "Full details, before &amp; after",
-                "Inside, outside and under the hood. This is the full reset, on real customer vehicles.",
+                "Inside, outside and under the hood, on real customer vehicles.",
                 BA_HOME,
                 more_link="/gallery/",
             ),
@@ -117,7 +117,7 @@ things like <em>“literally came back brand new, smelled new and looked even ne
         "Interior Car Detailing in Casa Grande, AZ | Supreme Clean Detailing",
         "Interior deep clean at your driveway: steam, shampoo, stain & odor treatment. Quoted upfront by vehicle size in Casa Grande, Maricopa & nearby. ☎ (520) 840-2452",
         "Interior deep clean: every vent, seam and cupholder",
-        "We handle the whole Arizona interior enemy list of dust, UV, spills, pet hair and mystery smells, all in one visit at your home or office.",
+        "We handle everything Arizona throws at an interior: dust, UV, spills, pet hair and stubborn smells, all in one visit at your home or office.",
         125,
         170,
         [
@@ -168,7 +168,7 @@ clean since I bought it,”</em> as one review puts it.</p>
                         ("Can you get stains out of seats?", "<p>Most, yes. Hot-water extraction plus the right chemistry handles coffee, soda, milk and water marks. Text a photo for a straight yes/no before you book.</p>"),
                         ("Do you clean child seats?", "<p>We'll vacuum and wipe around them and clean beneath; for the seat itself we'll advise what's safe per the manufacturer. Just mention it when booking.</p>"),
                         ("My interior is… bad. Be honest.", "<p>Anthony has seen worse, promise. Worst case it's a condition surcharge quoted upfront, never a lecture.</p>"),
-                        ("Leather seats?", "<p>Cleaned then conditioned, which is vital in Arizona, where UV turns unconditioned leather into jerky.</p>"),
+                        ("Leather seats?", "<p>Cleaned then conditioned, which is vital in Arizona, where UV dries out and cracks unconditioned leather.</p>"),
                     ],
                 },
             ),
@@ -213,7 +213,7 @@ plan is for (regulars save on every visit; ask when you book).</p>
             ),
             showcase_section(
                 "More recent work",
-                "A few finished exteriors from around the corridor.",
+                "A few finished exteriors from recent jobs.",
                 SHOWCASE,
             ),
             (
@@ -248,7 +248,7 @@ plan is for (regulars save on every visit; ask when you book).</p>
         "Car Odor Removal in Casa Grande, AZ for Smoke, Pet & Spill Smells | Supreme Clean Detailing",
         "We remove car odors at the source, whether it's smoke, pets, spilled milk or moisture. Proven results in Casa Grande & Maricopa AZ (read the reviews). ☎ (520) 840-2452",
         "Odor removal that treats the source, not perfume over the problem",
-        "A smell lives somewhere: in carpet padding, seat foam, vents. We find it, extract it, and treat it. One customer's review: “they were able to remove a smell I had in my car.”",
+        "A smell always has a source: carpet padding, seat foam or the vents. We find it, extract it and treat it. One customer's review: “they were able to remove a smell I had in my car.”",
         0,
         0,
         [
@@ -257,7 +257,7 @@ plan is for (regulars save on every visit; ask when you book).</p>
                 {
                     "title": "How we kill odors for good",
                     "html": """
-<p>Air fresheners lose to biology every time. Our process: identify the source (spill, smoke residue,
+<p>Air fresheners only cover a smell. They never remove it. Our process: identify the source (spill, smoke residue,
 pet accidents, monsoon moisture), <strong>extract</strong> it with hot water from carpet and upholstery,
 <strong>steam</strong> hard surfaces and vents where residue films cling, then apply an odor
 <strong>treatment</strong> that neutralizes what's left instead of masking it.</p>
@@ -295,7 +295,7 @@ second treatment. You'll get an honest read from the photos and a firm price bef
                     "items": [
                         ("Can you remove cigarette smell completely?", "<p>Light-to-moderate smoke: usually yes in one visit. Years of heavy smoking: expect major improvement first visit and a straight answer about whether a second treatment is worth it.</p>"),
                         ("Something spilled and now it's baking in the heat…", f"<p>Classic Arizona. Don't wait, because the longer it cooks, the deeper it goes. <a href=\"sms:{TEL}\">Text {PHONE}</a> today, and spill extractions are often same-week.</p>"),
-                        ("Do you just ozone-bomb the car?", "<p>No. Treatment without extraction is perfume with extra steps. We physically remove the source first, and that's why it works.</p>"),
+                        ("Do you just ozone-bomb the car?", "<p>No. Spraying a treatment without removing the source only covers the smell for a few days. We physically remove the source first, and that's why it works.</p>"),
                     ],
                 },
             ),
@@ -327,7 +327,7 @@ Combined with an interior deep clean, the cabin also stops <em>smelling</em> lik
             ),
             price_block(
                 "Pet hair pricing",
-                "Honest tiering by how furry we're talking.",
+                "Priced by how much hair we are dealing with.",
                 [
                     {"name": "Light", "tagline": "Occasional passenger pup", "prices": [("With any interior service", "quoted upfront")], "includes": ["Affected seats &amp; carpet", "Two-step tooling + extraction"]},
                     {"name": "Moderate", "tagline": "Daily co-pilot", "popular": True, "prices": [("With any interior service", "quoted upfront")], "includes": ["All carpet + upholstery", "Cargo area included"]},
@@ -380,7 +380,7 @@ unlit farm road or I-8 at night. Replacement housings run hundreds per side at a
 is a flat <strong>$55 per headlight</strong> ($110 for the pair): progressive wet-sanding to remove the
 dead UV-burned layer, machine polish back to optical clarity, then a UV sealant so it lasts instead of
 hazing back in a month.</p>
-<p>It's also the single highest-impact small fix you can buy before selling a vehicle, because yellowed lights
+<p>It's also one of the best small upgrades before selling a vehicle, because yellowed lights
 read as “old car” from across the lot.</p>
 """,
                 },
@@ -421,7 +421,7 @@ read as “old car” from across the lot.</p>
                 {
                     "title": "How fleet service works",
                     "html": """
-<p>Dusty, bug-plastered trucks tell your customers a story, and it's the wrong one. Supreme Clean comes to your
+<p>A dusty, bug-covered truck sends your customers the wrong message. Supreme Clean comes to your
 yard in Casa Grande, Maricopa, Coolidge, Eloy or Florence on a schedule that doesn't interrupt work:
 weekly or bi-weekly exterior washes to keep the fleet presentable, monthly or quarterly interior cleans
 for crew vehicles, and full details when a unit rotates, sells, or comes off lease.</p>

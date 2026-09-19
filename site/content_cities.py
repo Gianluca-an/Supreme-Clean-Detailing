@@ -34,7 +34,7 @@ def city(slug, name, title, desc, h1, sub, local_html, faq_items, review):
             ("pricing", PRICING_TIERS),
             ba_section(
                 "Recent transformations",
-                "Real before-and-afters from customer vehicles around the corridor.",
+                "Before-and-afters from real customer vehicles nearby.",
                 BA_HOME,
                 more_link="/gallery/",
             ),
@@ -219,7 +219,7 @@ the oldest main street in the state, and none of it is close to a real detail sh
 of mobile: <strong>the shop comes to you.</strong></p>
 <p>Anthem residents keep two-car garages full of well-loved vehicles that deserve better than dust
 covers; a monthly <a href="/services/exterior-detailing/">wash &amp; shine</a> plus an annual
-<a href="/services/full-detail/">full detail</a> keeps them showroom-side. Along Hunt Highway and the
+<a href="/services/full-detail/">full detail</a> keeps them looking their best. Along Hunt Highway and the
 newer builds, commuter SUVs collect the same 79/Hunt dust and drive-through crumbs as everywhere else, and
 the <a href="/services/interior-detailing/">interior deep clean</a> resets them in an afternoon.</p>
 <p>Selling or trading? Between a detail and a <a href="/services/headlight-restoration/">headlight
@@ -251,7 +251,7 @@ our <a href="/services/exterior-detailing/">hand wash</a> handles the light spot
 water-spot treatment is available when the mineral etching has had a summer to bake in. Commuters
 running Sunland Gin to I-10 every day book the monthly wash rotation; families call us for the
 <a href="/services/interior-detailing/">interior deep clean</a> when the school-run backseat finally
-reaches critical mass, and for whatever the <a href="/services/odor-removal/">smell</a> turns out
+gets out of hand, and for whatever the <a href="/services/odor-removal/">smell</a> turns out
 to be.</p>
 <p>Same deal as everywhere we work: exact price from your photos before booking, no prepayment, and a
 walk-around before you pay a dollar.</p>
@@ -260,7 +260,7 @@ walk-around before you pay a dollar.</p>
             FAQ_TRAVEL,
             (
                 "Sand toys and side-by-sides?",
-                f"<p>Post-dunes cleanups welcome. Text {PHONE} a photo of the carnage for a straight quote.</p>",
+                f"<p>Post-dunes cleanups welcome. Text {PHONE} a photo of the mess for a straight quote.</p>",
             ),
             FAQ_HOA,
         ],
@@ -272,7 +272,7 @@ walk-around before you pay a dollar.</p>
         "Mobile Car Detailing in San Tan Valley, AZ | Supreme Clean Detailing",
         "Mobile car detailing in San Tan Valley AZ, covering Johnson Ranch, San Tan Heights and Copper Basin. 5.0★, we come to you. ☎ (520) 840-2452",
         "Car detailing in San Tan Valley, Johnson Ranch to Copper Basin",
-        "Hunt Highway traffic, desert dust and busy families: the perfect storm for a driveway detail. We handle all of it, at your address.",
+        "Hunt Highway traffic, desert dust and busy families all add up to a car that needs a good driveway detail. We handle all of it, at your address.",
         f"""
 <p>San Tan Valley grew faster than its services, including car care. Between Hunt Highway construction
 dust, San Tan Mountain trail days and the daily grind to Queen Creek and Gilbert jobs, STV vehicles work
@@ -308,7 +308,7 @@ times that to a sale price.</p>
 and often add a surcharge for “the drive.” We come up from the Casa Grande side, so Queen Creek and the
 Encanterra corridor are <strong>standard service area</strong> for us: same fair pricing our
 <a href="/reviews/">reviews</a> call “half of the quotes I received.”</p>
-<p>QC garages hold nice vehicles, and nice vehicles deserve the careful version of everything: two-bucket
+<p>QC garages hold nice vehicles, and they deserve careful work: two-bucket
 <a href="/services/exterior-detailing/">hand washing</a> (never a tunnel brush), leather cleaned and
 conditioned against the sun, and a <a href="/services/full-detail/">full detail</a> finished with a
 panel-by-panel walk-around before you pay. Horse property along Sossaman or Hawes? Dust and hay ride

@@ -57,7 +57,7 @@ TIER_EXTERIOR = {
 
 TIER_INTERIOR = {
     "name": "Interior Deep Clean",
-    "tagline": "Every vent, seam and cupholder gets steamed, shampooed and conditioned like the day you bought it.",
+    "tagline": "Every vent, seam and cupholder gets steamed, shampooed and conditioned.",
     "prices": [
         ("Car / coupe", "$125"),
         ("Truck", "$135"),
@@ -98,7 +98,7 @@ TIER_BASIC = {
 
 TIER_SUPREME = {
     "name": "Supreme Full Detail",
-    "tagline": "A complete reset with a full interior deep clean, an exterior wash and hand-applied wax. It is our most-booked service.",
+    "tagline": "A full interior deep clean, an exterior wash and hand-applied wax, all in one visit. It is our most-booked service.",
     "popular": True,
     "prices": [
         ("Car / coupe", "$170"),
@@ -131,8 +131,8 @@ ADDONS = (
         "sub": "Bolt any of these onto a package, or book them on their own.",
         "items": [
             ("Wax / sealant upgrade", "+$20", "Longer-lasting protection and gloss against the Arizona sun. (Already included in the Supreme Full Detail.)"),
-            ("Clay bar &amp; seal", "$65", "Deep paint decontamination that pulls out bonded fallout and overspray, then seals the finish glass-smooth."),
-            ("Engine bay detail", "$45 · $50 XL", "A careful degrease, gentle rinse and dress, so it shows like a dealer lot."),
+            ("Clay bar &amp; seal", "$65", "Deep paint decontamination that pulls out bonded fallout and overspray, then seals the finish smooth."),
+            ("Engine bay detail", "$45 · $50 XL", "A careful degrease, gentle rinse and dress, so the engine bay looks clean and dealer-ready."),
             ("Headlight restoration", "$55 / headlight", "Cloudy, yellowed lenses wet-sanded, polished and UV-sealed clear again."),
             ("Pet hair removal", "quoted upfront", "Our two-step process pulls embedded hair out of carpet and seats."),
             ("Odor elimination", "quoted upfront", "Smoke, pets and spilled milk, all treated at the source, not perfumed over. “They were able to remove a smell I had in my car.”"),
@@ -151,7 +151,7 @@ STEPS = (
             ),
             (
                 "We come to you",
-                "Home, work, anywhere in the Casa Grande, Maricopa and San Tan corridor. Supplies, water and power arrangements are on us, so just point at the vehicle.",
+                "Home, work, anywhere in the Casa Grande, Maricopa and San Tan corridor. Supplies, water and power arrangements are on us, so all you do is point us at the vehicle.",
             ),
             (
                 "Walk around, then drive happy",
@@ -328,7 +328,7 @@ CORE_PAGES = [
             TRUSTBAR,
             showcase_section(
                 "Recently detailed",
-                "A few of the cars and trucks we've brought back to showroom-shine across the corridor.",
+                "A few of the cars and trucks we've detailed around Casa Grande and nearby.",
                 SHOWCASE_HOME,
             ),
             (
@@ -337,7 +337,7 @@ CORE_PAGES = [
                     "title": "What we detail",
                     "sub": "Cars, trucks, SUVs and work vehicles. If it drives through Pinal County dust, we make it new again.",
                     "items": [
-                        {"icon": "sparkle", "title": "Full Detail", "text": "Interior + exterior in one visit. The full reset.", "price": "from $115", "href": "/services/full-detail/"},
+                        {"icon": "sparkle", "title": "Full Detail", "text": "Interior and exterior in one visit.", "price": "from $115", "href": "/services/full-detail/"},
                         {"icon": "seat", "title": "Interior Deep Clean", "text": "Steam, shampoo, every vent and seam.", "price": "from $125", "href": "/services/interior-detailing/"},
                         {"icon": "drop", "title": "Exterior Wash & Shine", "text": "Hand wash, wheels and sealant, with zero swirl marks.", "price": "from $55", "href": "/services/exterior-detailing/"},
                         {"icon": "nose", "title": "Odor Removal", "text": "Smoke, pets and mystery smells, gone at the source.", "href": "/services/odor-removal/"},
@@ -350,8 +350,8 @@ CORE_PAGES = [
             ("pricing", PRICING_TIERS),
             ADDONS,
             ba_section(
-                "The difference is the detail",
-                "Real before-and-afters from real jobs, same vehicle, same day. No stock photos, ever.",
+                "Before and after",
+                "Before-and-afters from real jobs. Same vehicle, same day, no stock photos.",
                 BA_HOME,
                 more_link="/gallery/",
             ),
@@ -361,8 +361,7 @@ CORE_PAGES = [
                 {
                     "title": "Why Casa Grande cars need more than a drive-through wash",
                     "html": """
-<p>Between the I-10 haul, monsoon haboobs and summer sun, Pinal County is one of the hardest places in
-America to keep a vehicle clean. Blowing dust works into every vent and seat rail. UV bakes dashboards
+<p>Between the I-10 traffic, monsoon dust and relentless sun, Pinal County is a tough place to keep a vehicle clean. Blowing dust works into every vent and seat rail. UV bakes dashboards
 and clear coat. Automatic tunnel washes just drag that grit across your paint in a dirty brush.</p>
 <p><strong>Supreme Clean Detailing does it the right way:</strong> a proper hand wash and interior deep clean at your
 home or workplace, using our own supplies, with the owner doing the work, not a rotating crew. That's
@@ -427,7 +426,7 @@ seats, and smells other shops couldn't fix.</p>
                 {
                     "title": "All services",
                     "items": [
-                        {"icon": "sparkle", "title": "Full Detail", "text": "Complete interior + exterior reset in one visit.", "price": "from $115", "href": "/services/full-detail/"},
+                        {"icon": "sparkle", "title": "Full Detail", "text": "Complete interior and exterior clean in one visit.", "price": "from $115", "href": "/services/full-detail/"},
                         {"icon": "seat", "title": "Interior Deep Clean", "text": "Vacuum, steam, shampoo and condition every surface.", "price": "from $125", "href": "/services/interior-detailing/"},
                         {"icon": "drop", "title": "Exterior Wash & Shine", "text": "Two-bucket hand wash, wheels, glass, sealant.", "price": "from $55", "href": "/services/exterior-detailing/"},
                         {"icon": "nose", "title": "Odor Removal", "text": "We treat the source, whether it is smoke, pets, food or moisture.", "href": "/services/odor-removal/"},
@@ -576,18 +575,18 @@ seats, and smells other shops couldn't fix.</p>
         "priority": "0.6",
         "title": "Before & After Gallery | Supreme Clean Detailing, Casa Grande, AZ",
         "desc": "Before-and-after photos from real Supreme Clean Detailing jobs across Casa Grande and Maricopa, AZ, including interiors, exteriors, trucks and Corvettes alike.",
-        "h1": "The work speaks for itself",
-        "hero_sub": "Real vehicles on real Casa Grande driveways. Every photo below is our own work. No stock images, ever.",
+        "h1": "See the work for yourself",
+        "hero_sub": "Every photo below is our own work on real customer vehicles. No stock images.",
         "crumbs": [("Gallery", None)],
         "sections": [
             ba_section(
                 "Before &amp; after",
-                "Same vehicle, same visit. We drag interiors, exteriors and engine bays back to like-new.",
+                "Same vehicle, same visit. Interiors, exteriors and engine bays brought back to like-new.",
                 BEFORE_AFTER,
             ),
             showcase_section(
                 "Recent work",
-                "A few of the cars and trucks we've had the pleasure of detailing around the corridor.",
+                "A few of the cars and trucks we've detailed recently around Casa Grande.",
                 SHOWCASE,
             ),
             REVIEWS_HOME,
@@ -602,7 +601,7 @@ seats, and smells other shops couldn't fix.</p>
         "title": "About Anthony at Supreme Clean Detailing | Casa Grande, AZ",
         "desc": "Supreme Clean Detailing is owner-operated by Anthony in Casa Grande, AZ. On-time, fair prices, and a work ethic customers write reviews about. ☎ (520) 840-2452",
         "h1": "The owner does the work. That's the whole secret.",
-        "hero_sub": "Supreme Clean Detailing is Anthony, a Casa Grande detailer building a business one spotless car at a time.",
+        "hero_sub": "Supreme Clean Detailing is Anthony, a Casa Grande detailer who does every job himself.",
         "crumbs": [("About", None)],
         "sections": [
             TRUSTBAR,
