@@ -205,7 +205,9 @@ strong{font-weight:600;color:var(--foam)}
   letter-spacing:.06em;background:var(--glass);padding:8px 16px;border-radius:999px;
   border:1px solid var(--line);margin-bottom:var(--s5)}
 .hero-rating:hover{text-decoration:none;border-color:var(--accent)}
-.stars{display:inline-flex;color:var(--star);gap:1px}
+.stars{position:relative;display:inline-block;line-height:0;white-space:nowrap;color:var(--star);vertical-align:middle}
+.stars .stars-bg{display:inline-flex;gap:1px;opacity:.28}
+.stars .stars-fg{position:absolute;top:0;left:0;display:inline-flex;gap:1px;overflow:hidden}
 .hero-badges{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);list-style:none;
   color:var(--mist-72);font-size:13px;letter-spacing:.03em}
 .hero-badges li{display:inline-flex;align-items:center;gap:var(--s2)}

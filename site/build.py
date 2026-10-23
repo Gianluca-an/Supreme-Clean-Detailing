@@ -29,7 +29,7 @@ SITE_URL = "https://supremecleandetailingpro.com"
 # 9F0E13 red clashes with the site palette; swap the param back if the red
 # was intentional).
 GHL_CALENDAR_URL = (
-    "https://api.leadconnectorhq.com/widget/booking/vkmRhebji6NFtGUXYuxl"
+    "https://api.leadconnectorhq.com/widget/booking/TQrrjV28Md7bKwDbNqoi"
     "?backgroundColor=%23ffffff&primaryColor=%235FB8C4"
     "&buttonText=Schedule+Appointment&showCalendarTitle=true"
     "&showCalendarDescription=true&showCalendarDetails=true&default=false"
@@ -80,8 +80,8 @@ BIZ = {
     "city": "Casa Grande",
     "region": "AZ",
     "zip": "85122",
-    "rating": "5.0",
-    "review_count": "20",
+    "rating": "4.6",
+    "review_count": "43",
     "hours_human": "Monday to Saturday, 8:00 AM to 6:00 PM",
     "hours_schema": ["Mo-Sa 08:00-18:00"],
     # Owner's real Google Business Profile (share link), powers "Find us on
@@ -242,8 +242,20 @@ def slug_url(slug: str) -> str:
     return "/" if slug == "" else f"/{slug.strip('/')}/"
 
 
-def stars(n: int = 5) -> str:
-    return f'<span class="stars" aria-label="{n} out of 5 stars">' + icon("star") * n + "</span>"
+def stars(value: float = None) -> str:
+    """A 5-star row with partial fill matching `value` (defaults to the live
+    Google rating). Renders faint empty stars behind solid gold ones clipped to
+    the rated fraction, so a 4.6 reads as 4.6, not a perfect 5."""
+    if value is None:
+        value = float(BIZ["rating"])
+    pct = max(0.0, min(100.0, value / 5 * 100))
+    row = icon("star") * 5
+    return (
+        f'<span class="stars" role="img" aria-label="{value} out of 5 stars">'
+        f'<span class="stars-bg" aria-hidden="true">{row}</span>'
+        f'<span class="stars-fg" aria-hidden="true" style="width:{pct:.1f}%">{row}</span>'
+        "</span>"
+    )
 
 
 # ---------------------------------------------------------------- sections ---
