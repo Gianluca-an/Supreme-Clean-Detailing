@@ -44,7 +44,7 @@ SERVICE_PAGES = [
         "The Full Detail: inside and out in one visit",
         "We offer two levels. The Basic Full Detail is for regular upkeep, and our most-booked Supreme Full Detail adds a complete interior deep clean and hand-applied wax. Both are done in one visit at your home or work.",
         115,
-        225,
+        255,
         [
             (
                 "prose",
@@ -118,8 +118,8 @@ things like <em>“literally came back brand new, smelled new and looked even ne
         "Interior deep clean at your driveway: steam, shampoo, stain & odor treatment. Quoted upfront by vehicle size in Casa Grande, Maricopa & nearby. ☎ (520) 840-2452",
         "Interior deep clean: every vent, seam and cupholder",
         "We handle everything Arizona throws at an interior: dust, UV, spills, pet hair and stubborn smells, all in one visit at your home or office.",
-        125,
-        170,
+        140,
+        185,
         [
             (
                 "prose",

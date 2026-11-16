@@ -59,11 +59,11 @@ TIER_INTERIOR = {
     "name": "Interior Deep Clean",
     "tagline": "Every vent, seam and cupholder gets steamed, shampooed and conditioned.",
     "prices": [
-        ("Car / coupe", "$125"),
-        ("Truck", "$135"),
-        ("SUV", "$145"),
-        ("XL truck", "$160"),
-        ("XL SUV", "$170"),
+        ("Car / coupe", "$140"),
+        ("Truck", "$150"),
+        ("SUV", "$160"),
+        ("XL truck", "$175"),
+        ("XL SUV", "$185"),
     ],
     "time": "About 2 to 3 hours",
     "includes": [
@@ -101,11 +101,11 @@ TIER_SUPREME = {
     "tagline": "A full interior deep clean, an exterior wash and hand-applied wax, all in one visit. It is our most-booked service.",
     "popular": True,
     "prices": [
-        ("Car / coupe", "$170"),
-        ("Truck", "$180"),
-        ("SUV", "$190"),
-        ("XL truck", "$210"),
-        ("XL SUV", "$225"),
+        ("Car / coupe", "$200"),
+        ("Truck", "$210"),
+        ("SUV", "$220"),
+        ("XL truck", "$240"),
+        ("XL SUV", "$255"),
     ],
     "time": "About 3 to 5 hours",
     "includes": [
@@ -314,7 +314,7 @@ CORE_PAGES = [
         ],
         "hero_card": {
             "label": "Supreme · Full Detail",
-            "price": "from $170",
+            "price": "from $200",
             "rows": [
                 ("Interior deep clean, steam &amp; shampoo", "2 to 3 h"),
                 ("Two-bucket hand wash &amp; wheels", "included"),
@@ -338,7 +338,7 @@ CORE_PAGES = [
                     "sub": "Cars, trucks, SUVs and work vehicles. If it drives through Pinal County dust, we make it new again.",
                     "items": [
                         {"icon": "sparkle", "title": "Full Detail", "text": "Interior and exterior in one visit.", "price": "from $115", "href": "/services/full-detail/"},
-                        {"icon": "seat", "title": "Interior Deep Clean", "text": "Steam, shampoo, every vent and seam.", "price": "from $125", "href": "/services/interior-detailing/"},
+                        {"icon": "seat", "title": "Interior Deep Clean", "text": "Steam, shampoo, every vent and seam.", "price": "from $140", "href": "/services/interior-detailing/"},
                         {"icon": "drop", "title": "Exterior Wash & Shine", "text": "Hand wash, wheels and sealant, with zero swirl marks.", "price": "from $55", "href": "/services/exterior-detailing/"},
                         {"icon": "nose", "title": "Odor Removal", "text": "Smoke, pets and mystery smells, gone at the source.", "href": "/services/odor-removal/"},
                         {"icon": "paw", "title": "Pet Hair Removal", "text": "Embedded hair out of carpets and seats.", "href": "/services/pet-hair-removal/"},
@@ -385,7 +385,7 @@ seats, and smells other shops couldn't fix.</p>
                     "items": [
                         (
                             "How much does mobile detailing cost?",
-                            '<p>Exterior hand washes start at $55, interior deep cleans at $125, and full details at $115, all priced by vehicle size. Text a photo of your vehicle and you\'ll have your exact number before you book. See <a href="/pricing/">packages &amp; pricing</a>.</p>',
+                            '<p>Exterior hand washes start at $55, interior deep cleans at $140, and full details at $115, all priced by vehicle size. Text a photo of your vehicle and you\'ll have your exact number before you book. See <a href="/pricing/">packages &amp; pricing</a>.</p>',
                         ),
                         (
                             "Do I need to provide water or power?",
@@ -427,7 +427,7 @@ seats, and smells other shops couldn't fix.</p>
                     "title": "All services",
                     "items": [
                         {"icon": "sparkle", "title": "Full Detail", "text": "Complete interior and exterior clean in one visit.", "price": "from $115", "href": "/services/full-detail/"},
-                        {"icon": "seat", "title": "Interior Deep Clean", "text": "Vacuum, steam, shampoo and condition every surface.", "price": "from $125", "href": "/services/interior-detailing/"},
+                        {"icon": "seat", "title": "Interior Deep Clean", "text": "Vacuum, steam, shampoo and condition every surface.", "price": "from $140", "href": "/services/interior-detailing/"},
                         {"icon": "drop", "title": "Exterior Wash & Shine", "text": "Two-bucket hand wash, wheels, glass, sealant.", "price": "from $55", "href": "/services/exterior-detailing/"},
                         {"icon": "nose", "title": "Odor Removal", "text": "We treat the source, whether it is smoke, pets, food or moisture.", "href": "/services/odor-removal/"},
                         {"icon": "paw", "title": "Pet Hair Removal", "text": "Embedded fur lifted from carpet and upholstery.", "href": "/services/pet-hair-removal/"},

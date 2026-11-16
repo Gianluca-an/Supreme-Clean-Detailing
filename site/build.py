@@ -739,7 +739,7 @@ def base_schema(p) -> list[dict]:
         "sameAs": [BIZ["gbp_url"], BIZ["instagram"], BIZ["tiktok"]],
     }
     if PRICES_LIVE:
-        biz["priceRange"] = "$45 - $225"
+        biz["priceRange"] = "$45 - $255"
     out = [biz]
     if p["slug"] == "":
         out.append(
