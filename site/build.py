@@ -80,8 +80,8 @@ BIZ = {
     "city": "Casa Grande",
     "region": "AZ",
     "zip": "85122",
-    "rating": "4.6",
-    "review_count": "43",
+    "rating": "4.7",
+    "review_count": "48",
     "hours_human": "Monday to Saturday, 8:00 AM to 6:00 PM",
     "hours_schema": ["Mo-Sa 08:00-18:00"],
     # Owner's real Google Business Profile (share link), powers "Find us on
@@ -245,7 +245,7 @@ def slug_url(slug: str) -> str:
 def stars(value: float = None) -> str:
     """A 5-star row with partial fill matching `value` (defaults to the live
     Google rating). Renders faint empty stars behind solid gold ones clipped to
-    the rated fraction, so a 4.6 reads as 4.6, not a perfect 5."""
+    the rated fraction, so a 4.7 reads as 4.7, not a perfect 5."""
     if value is None:
         value = float(BIZ["rating"])
     pct = max(0.0, min(100.0, value / 5 * 100))

@@ -79,7 +79,7 @@ CITY_PAGES = [
         "/car-detailing-casa-grande-az/",
         "Casa Grande",
         "Mobile Car Detailing in Casa Grande, AZ, We Come to You | Supreme Clean Detailing",
-        "Casa Grande's own 4.6★ mobile detailer. Interior, exterior & full details at your driveway, with fair upfront prices and no prepayment. ☎ (520) 840-2452",
+        "Casa Grande's own 4.7★ mobile detailer. Interior, exterior & full details at your driveway, with fair upfront prices and no prepayment. ☎ (520) 840-2452",
         "Car detailing in Casa Grande, AZ, from the detailer who actually lives here",
         "Supreme Clean Detailing is based in Casa Grande. No travel fees and no big-city markup, just careful, professional work at your driveway.",
         f"""
@@ -115,7 +115,7 @@ dealership-quality result, checked panel by panel with you before payment.</p>
         "/car-detailing-maricopa-az/",
         "Maricopa",
         "Mobile Car Detailing in Maricopa, AZ, We Come to You | Supreme Clean Detailing",
-        "Mobile car detailing in Maricopa AZ: Rancho El Dorado, Province, Tortosa & more. 4.6★, upfront quotes, no prepayment. ☎ (520) 840-2452",
+        "Mobile car detailing in Maricopa AZ: Rancho El Dorado, Province, Tortosa & more. 4.7★, upfront quotes, no prepayment. ☎ (520) 840-2452",
         "Car detailing in Maricopa, AZ, without the drive up the 347",
         "Your SR-347 commute is hard enough. We bring the detail to Rancho El Dorado, Province, Glennwilde, Tortosa and anywhere else in Maricopa.",
         f"""
@@ -146,7 +146,7 @@ left behind.</p>
         "/car-detailing-eloy-az/",
         "Eloy",
         "Mobile Car Detailing in Eloy, AZ, to Robson Ranch & Beyond | Supreme Clean Detailing",
-        "Mobile car detailing in Eloy AZ, covering Robson Ranch, Toltec & Picacho. 4.6★ owner-operated service at your driveway. ☎ (520) 840-2452",
+        "Mobile car detailing in Eloy AZ, covering Robson Ranch, Toltec & Picacho. 4.7★ owner-operated service at your driveway. ☎ (520) 840-2452",
         "Car detailing in Eloy, AZ, Robson Ranch's driveway detailer",
         "From Robson Ranch golf-cart garages to work trucks off Sunshine Boulevard, we detail where you park.",
         f"""
@@ -179,7 +179,7 @@ clean</a> gets the desert back out of it.</p>
         "/car-detailing-coolidge-az/",
         "Coolidge",
         "Mobile Car Detailing in Coolidge, AZ, at Your Door | Supreme Clean Detailing",
-        "Mobile car detailing in Coolidge AZ, 4.6★ owner-operated, with upfront quotes, no prepayment, and we come to you. ☎ (520) 840-2452",
+        "Mobile car detailing in Coolidge AZ, 4.7★ owner-operated, with upfront quotes, no prepayment, and we come to you. ☎ (520) 840-2452",
         "Car detailing in Coolidge, AZ, big-city results with hometown treatment",
         "Fifteen minutes from our Casa Grande base. New-build driveways off Arizona Blvd, CAC staff lots and farm trucks, all standard service.",
         f"""
@@ -210,7 +210,7 @@ front, and you approve the work panel by panel before we leave, the same careful
         "/car-detailing-florence-az/",
         "Florence",
         "Mobile Car Detailing in Florence, AZ, to Anthem & Historic Florence | Supreme Clean Detailing",
-        "Mobile car detailing in Florence AZ, covering Anthem at Merrill Ranch, Crestfield & historic downtown. 4.6★, we come to you. ☎ (520) 840-2452",
+        "Mobile car detailing in Florence AZ, covering Anthem at Merrill Ranch, Crestfield & historic downtown. 4.7★, we come to you. ☎ (520) 840-2452",
         "Car detailing in Florence, AZ, from Anthem to the historic district",
         "Anthem at Merrill Ranch, Crestfield Manor, Magic Ranch and downtown. Supreme Clean details at your driveway, on your schedule.",
         f"""
@@ -239,7 +239,7 @@ restoration</a>, most sellers make the cost back several times over at the negot
         "/car-detailing-arizona-city-az/",
         "Arizona City",
         "Mobile Car Detailing in Arizona City, AZ, We Come to You | Supreme Clean Detailing",
-        "Mobile car detailing in Arizona City AZ, 4.6★ owner-operated, with upfront quotes, no travel fees and no prepayment. ☎ (520) 840-2452",
+        "Mobile car detailing in Arizona City AZ, 4.7★ owner-operated, with upfront quotes, no travel fees and no prepayment. ☎ (520) 840-2452",
         "Car detailing in Arizona City, no shop required, we're at your door",
         "Ten minutes from our base. Lakeside homes, commuter cars and desert toys, all detailed in your driveway at standard rates.",
         f"""
@@ -270,7 +270,7 @@ walk-around before you pay a dollar.</p>
         "/car-detailing-san-tan-valley-az/",
         "San Tan Valley",
         "Mobile Car Detailing in San Tan Valley, AZ | Supreme Clean Detailing",
-        "Mobile car detailing in San Tan Valley AZ, covering Johnson Ranch, San Tan Heights and Copper Basin. 4.6★, we come to you. ☎ (520) 840-2452",
+        "Mobile car detailing in San Tan Valley AZ, covering Johnson Ranch, San Tan Heights and Copper Basin. 4.7★, we come to you. ☎ (520) 840-2452",
         "Car detailing in San Tan Valley, Johnson Ranch to Copper Basin",
         "Hunt Highway traffic, desert dust and busy families all add up to a car that needs a good driveway detail. We handle all of it, at your address.",
         f"""
@@ -300,7 +300,7 @@ times that to a sale price.</p>
         "/car-detailing-queen-creek-az/",
         "Queen Creek",
         "Mobile Car Detailing in Queen Creek, AZ, at Your Home | Supreme Clean Detailing",
-        "Mobile car detailing in Queen Creek AZ, Encanterra to Harvest. 4.6★ owner-operated, upfront prices, no prepayment, we come to you. ☎ (520) 840-2452",
+        "Mobile car detailing in Queen Creek AZ, Encanterra to Harvest. 4.7★ owner-operated, upfront prices, no prepayment, we come to you. ☎ (520) 840-2452",
         "Car detailing in Queen Creek, without Phoenix-metro pricing",
         "Encanterra, Harvest, Emperor Estates, the Ellsworth corridor: detailed at your driveway by the trusted owner-operator from just down the road.",
         f"""

@@ -40,7 +40,7 @@ SERVICE_PAGES = [
         "full-detail",
         "Full Detail",
         "Mobile Full Car Detail in Casa Grande, AZ, We Come to You | Supreme Clean Detailing",
-        "Complete interior + exterior detail at your driveway in Casa Grande, Maricopa & nearby. Quoted upfront by vehicle size, 4.6★ rated, no prepayment. ☎ (520) 840-2452",
+        "Complete interior + exterior detail at your driveway in Casa Grande, Maricopa & nearby. Quoted upfront by vehicle size, 4.7★ rated, no prepayment. ☎ (520) 840-2452",
         "The Full Detail: inside and out in one visit",
         "We offer two levels. The Basic Full Detail is for regular upkeep, and our most-booked Supreme Full Detail adds a complete interior deep clean and hand-applied wax. Both are done in one visit at your home or work.",
         115,

@@ -22,7 +22,7 @@ TRUSTBAR = (
     "trustbar",
     {
         "items": [
-            {"icon": "star", "text": "4.6 ★ on Google (43 reviews)"},
+            {"icon": "star", "text": "4.7 ★ on Google (48 reviews)"},
             {"icon": "truck", "text": "We come to you"},
             {"icon": "clock", "text": "On time, every time"},
             {"icon": "cash", "text": "Fair, upfront pricing"},
@@ -164,7 +164,7 @@ STEPS = (
 REVIEWS_HOME = (
     "reviews",
     {
-        "title": "Rated 4.6 on Google across 43 reviews",
+        "title": "Rated 4.7 on Google across 48 reviews",
         "sub": "Every review below is a real, public Google review of Supreme Clean Detailing.",
         "items": [
             (
@@ -303,13 +303,13 @@ CORE_PAGES = [
         "nav_active": "/",
         "priority": "1.0",
         "title": "Supreme Clean Detailing: Mobile Car Detailing in Casa Grande, AZ | (520) 840-2452",
-        "desc": "Top-rated mobile car detailing in Casa Grande, AZ ✔ 4.6★ on Google ✔ Owner-operated ✔ Fair upfront prices ✔ We come to you ☎ (520) 840-2452",
+        "desc": "Top-rated mobile car detailing in Casa Grande, AZ ✔ 4.7★ on Google ✔ Owner-operated ✔ Fair upfront prices ✔ We come to you ☎ (520) 840-2452",
         "hero_eyebrow": "Owner-operated · Casa Grande, Arizona",
         "h1": "Expert <em>mobile car detailing</em> at your Casa Grande driveway.",
         "hero_sub": f"Mobile car detailing for Casa Grande and the I-10 corridor, done by {BIZ['owner']}, the owner himself. Everything is washed, steamed and finished by hand. No rush, no residue, and no prepayment.",
         "hero_stats": [
-            ("4.6<i>★</i>", "Google rating"),
-            ("43", "Google reviews"),
+            ("4.7<i>★</i>", "Google rating"),
+            ("48", "Google reviews"),
             ("100<i>%</i>", "Satisfaction guarantee"),
         ],
         "hero_card": {
@@ -519,8 +519,8 @@ seats, and smells other shops couldn't fix.</p>
         "slug": "reviews",
         "nav_active": "/reviews/",
         "priority": "0.8",
-        "title": "Reviews of Supreme Clean Detailing, Casa Grande AZ (4.6★, 43 Google Reviews)",
-        "desc": "Read real Google reviews of Supreme Clean Detailing: 4.6 stars across 43 reviews. On-time, fair prices, dealership-quality results in Casa Grande & Maricopa, AZ.",
+        "title": "Reviews of Supreme Clean Detailing, Casa Grande AZ (4.7★, 48 Google Reviews)",
+        "desc": "Read real Google reviews of Supreme Clean Detailing: 4.7 stars across 48 reviews. On-time, fair prices, dealership-quality results in Casa Grande & Maricopa, AZ.",
         "h1": "What our customers say",
         "hero_sub": "All quotes below are from public Google reviews of Supreme Clean Detailing. We'd love to earn yours next.",
         "crumbs": [("Reviews", None)],
