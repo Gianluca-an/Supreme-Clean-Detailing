@@ -832,6 +832,7 @@ def render_page(p) -> str:
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- auto-deploy connected 2026-11-16 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {GA_SNIPPET}
 {META_PIXEL}
